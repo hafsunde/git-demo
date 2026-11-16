@@ -1,0 +1,78 @@
+# Git cheat sheet
+
+## Words
+
+| Word | Means |
+|---|---|
+| repository (repo) | A project folder that git keeps track of |
+| commit | A saved snapshot of the project, with a short message |
+| diff | What changed: red removed, green added |
+| hash | A commit's unique ID, e.g. `e81c5f3` |
+| `.git` | Hidden folder inside the project that holds the history |
+| stage | Choose which changes go into the next commit |
+| push | Send your commits to GitHub |
+| pull | Get new commits from GitHub |
+| clone | Download a repo from GitHub the first time |
+| `.gitignore` | A file listing what git should never track |
+| branch | A side version of the project (not needed to start) |
+| conflict | You and someone else changed the same line; you choose which to keep |
+
+## The daily cycle
+
+1. **Pull** when you start
+2. Edit and save as usual
+3. **Commit** with a message that says why
+4. **Push** when you're done
+
+Look at the **diff** when you didn't make every change yourself: after an AI edit, or after pulling a coauthor's work.
+
+## Where the buttons are
+
+| | VS Code | RStudio |
+|---|---|---|
+| See changes | Source Control icon (left bar) | Git tab (top right) |
+| Diff | Click the file | *Diff* button |
+| Commit | Type message → *Commit* | Tick *Staged* → *Commit* |
+| Push / pull | *Sync Changes* | Green arrow / blue arrow |
+| History | *Graph* in Source Control, or *Timeline* | Clock icon |
+| Throw away unsaved-to-git changes | Curved arrow next to the file (*Discard*) | *More → Revert* |
+| Undo last commit (not pushed) | `…` menu → *Commit → Undo Last Commit* | Ask for help, or use VS Code |
+
+Stata: Stata has no git button. Open the project folder in VS Code and use it for git.
+
+## Before letting AI edit your code
+
+1. Commit
+2. Let the AI edit
+3. Read the diff
+4. Keep what you asked for, discard the rest
+
+## History is permanent
+
+Deleting a file later doesn't remove it from earlier commits.
+A public repo shows the whole history, so before making code public, consider copying the final version into a **new repo** and publishing that one.
+
+To keep data files out from the start, add a `.gitignore` file. A starting point for R/Stata projects:
+
+```
+*.rds
+*.RData
+*.dta
+*.sav
+data/
+.Rhistory
+.Rproj.user/
+```
+
+## Good habits
+
+- Small commits, often
+- Messages that say why (`Adjust for birth year`, not `changes`)
+- Plain text files work best: `.R`, `.do`, `.tex`, `.md`, `.qmd`
+- LaTeX and Markdown: one sentence per line
+- Keep repos in a normal folder, not OneDrive/Dropbox
+
+## Learn more
+
+- *Happy Git and GitHub for the useR*: <https://happygitwithr.com>
+- GitHub Docs: <https://docs.github.com>

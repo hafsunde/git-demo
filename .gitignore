@@ -1,0 +1,12 @@
+# Quarto output
+slides/*.html
+slides/*_files/
+/.quarto/
+_site/
+
+# R / OS
+.Rhistory
+.RData
+.Rproj.user/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,196 @@
+/*-- scss:defaults --*/
+// Fonts: Helvetica where installed (Mac), otherwise Arial (Windows).
+
+// ===== PALETTE: GitHub colours (swap this block to change the look) =====
+// Divider/title colours are also set in slides.qmd: search for background-color.
+$primary:   #24292f;  // header band, section dividers, title slide
+$accent:    #0969da;  // lines, numbered steps, card tops, box borders
+$highlight: #fd8c73;  // the thin stripe under headers, title underline
+$hub:       #0969da;  // "GitHub" box in diagrams
+$alert:     #cf222e;  // "secure server" box in diagrams
+$ink:       #1f2328;  // body text
+$muted:     #59636e;  // secondary text
+$callout-color-note:      #0969da;
+$callout-color-tip:       #1a7f37;
+$callout-color-important: #8250df;
+$callout-color-caution:   #cf222e;
+$callout-color-warning:   #9a6700;
+// ===== END PALETTE =====
+
+$body-bg: #ffffff;
+$body-color: $ink;
+$link-color: $accent;
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$presentation-heading-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$presentation-heading-color: $primary;
+$presentation-heading-font-weight: 700;
+$presentation-heading-text-transform: none;
+$presentation-font-size-root: 56px;  // for a 1920x1080 slide
+$code-block-font-size: 0.95em;
+
+
+/*-- scss:rules --*/
+
+/* Text in fragments can render blurry: reveal.js marks fragments will-change: opacity,
+   which rasterises them as a separate layer before the slide is scaled.
+   See quarto-dev/quarto-cli#11297. */
+.reveal .fragment:not(.custom) { will-change: auto; }
+
+/* ---------- Slide layout ---------- */
+
+/* Title stays at the top; content is centred (slightly high) in the space below.
+   Add {.top} to a slide to opt out. */
+.reveal .slides section.slide.level2:not(.scrollable):not(.top) {
+  display: flex !important;
+  flex-direction: column;
+  height: 100%;
+}
+.reveal .slides section.slide.level2:not(.scrollable):not(.top) > h2 { margin-bottom: auto; }
+.reveal .slides section.slide.level2:not(.scrollable):not(.top)::after {
+  content: ""; margin-top: auto; min-height: 10%;
+}
+
+/* Header band: full-width bar behind each slide title, with a thin stripe below */
+.reveal .slides section.slide.level2 > h2 {
+  color: #fff;
+  padding: 0.3em 0 0.32em;
+  margin-top: 0;
+  background: $primary;
+  position: relative;
+  box-shadow: 0 0 0 100vmax $primary;
+  clip-path: inset(-100vmax -100vmax -9px -100vmax);
+}
+.reveal .slides section.slide.level2 > h2::after {
+  content: ""; position: absolute; left: -100vmax; right: -100vmax;
+  bottom: -9px; height: 9px; background: $highlight;
+}
+
+/* Title slide: dark background (set in the YAML), title on one line */
+.reveal .slides section#title-slide .title {
+  font-size: 1.9em; white-space: nowrap; color: #fff;
+}
+.reveal .slides section#title-slide .title::after {
+  content: ""; display: block; width: 3em; height: 9px; border-radius: 4.5px;
+  background: $highlight; margin: 0.35em auto 0;
+}
+.reveal .slides section#title-slide :is(.subtitle, .quarto-title-author-name, .quarto-title-affiliation, .date) { color: rgba(#fff, 0.9); }
+
+/* Slide numbers readable on dark divider slides */
+.reveal .slide-number { color: $muted; background: transparent; }
+.reveal.has-dark-background .slide-number,
+.reveal.has-dark-background .slide-number a { color: rgba(#fff, 0.8); }
+
+/* ---------- Text elements ---------- */
+
+/* Definition line on core-idea slides */
+.reveal .def { font-size: 1.15em; color: $primary; font-weight: 600; margin-bottom: 0.6em; }
+
+/* Inline code as a tinted pill */
+.reveal code:not(pre code) {
+  color: $ink; background: rgba($accent, 0.18);
+  padding: 0.05em 0.3em; border-radius: 6px;
+}
+
+/* Code blocks as soft tinted cards */
+.reveal div.sourceCode { background: transparent; border: none; }
+.reveal pre:not(.gitdiff) {
+  background: rgba($accent, 0.08); border: none; border-left: 6px solid $accent;
+  border-radius: 9px; box-shadow: none; padding: 0.3em 0.6em; box-sizing: border-box;
+}
+.reveal pre:not(.gitdiff) code { background: transparent; max-height: none; overflow: visible; }
+.reveal .hljs-ln-numbers { display: none; }
+
+/* Tables */
+.reveal table { font-size: 0.9em; border-collapse: collapse; }
+.reveal table th { color: $primary; border-bottom: 3px solid $accent !important; }
+.reveal table td { border-bottom: 1.5px solid rgba($accent, 0.35) !important; }
+.reveal table tbody tr:nth-child(odd) { background: rgba($accent, 0.07); }
+.reveal table td:first-child { font-weight: 600; }
+
+/* Callouts: larger than Quarto's default, full-strength titles */
+.reveal .slides section div.callout { font-size: 0.9em; }
+.reveal .callout .callout-title, .reveal .callout-title-container { color: $ink; }
+.reveal div.callout.callout-style-simple div.callout-title,
+.reveal div.callout.callout-style-default div.callout-title { opacity: 1; }
+
+/* Numbered steps as coloured circles: wrap an ordered list in ::: {.steps} */
+.reveal .steps ol { list-style: none; counter-reset: step; padding-left: 0; margin-left: 0; }
+.reveal .steps ol > li { counter-increment: step; position: relative; padding-left: 1.9em; margin: 0.35em 0; }
+.reveal .steps ol > li::before {
+  content: counter(step); position: absolute; left: 0; top: 0.05em;
+  width: 1.35em; height: 1.35em; line-height: 1.35em; border-radius: 50%;
+  background: $accent; color: #fff; text-align: center;
+  font-family: $presentation-heading-font; font-weight: 700; font-size: 0.85em;
+}
+
+/* Cards: ::: {.cards} with one ::: {} per card, first line **bold** */
+.reveal .cards { display: flex; gap: 0.6em; align-items: stretch; }
+.reveal .cards > div {
+  flex: 1; border-top: 9px solid $accent; background: rgba($accent, 0.08);
+  border-radius: 12px; padding: 0.7em 0.8em; font-size: 0.95em; text-align: center;
+}
+.reveal .cards > div strong {
+  display: block; color: $primary; font-family: $presentation-heading-font;
+  font-size: 1.15em; margin-bottom: 0.3em;
+}
+
+/* Expandable box (callout collapse is ignored in reveal.js). For readers afterwards. */
+.reveal details {
+  font-size: 0.75em;
+  border-left: 6px solid $accent;
+  background: rgba($accent, 0.08);
+  border-radius: 6px;
+  padding: 0.3em 0.8em;
+  margin-top: 0.8em;
+}
+.reveal details summary { cursor: pointer; font-weight: 600; color: $primary; }
+.reveal details.tip { border-left-color: $callout-color-tip; background: rgba($callout-color-tip, 0.07); }
+.reveal details.tip summary { color: $callout-color-tip; }
+.reveal details[open] summary { margin-bottom: 0.3em; }
+
+/* Screenshot placeholders */
+.reveal .placeholder {
+  border: 3px dashed $accent;
+  color: $muted;
+  padding: 1.5em;
+  text-align: center;
+  font-size: 0.6em;
+  border-radius: 12px;
+}
+
+/* ---------- Diagrams ---------- */
+
+/* Box-and-arrow diagrams */
+.reveal .flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  margin: 1em 0;
+  font-size: 0.85em;
+}
+.reveal .flow .box {
+  border: 3px solid $accent;
+  border-radius: 15px;
+  padding: 0.6em 0.8em;
+  background: rgba($accent, 0.08);
+  text-align: center;
+  line-height: 1.3;
+}
+.reveal .flow .box.hub { background: rgba($hub, 0.18); border-color: $hub; }
+.reveal .flow .box.secure { background: rgba($alert, 0.15); border-color: $alert; border-style: dashed; }
+.reveal .flow .arrow { text-align: center; color: $muted; font-size: 0.8em; line-height: 1.4; }
+.reveal .flow .loop { font-size: 1.6em; color: $primary; }
+
+/* Red/green diff block and legend chips */
+.reveal pre.gitdiff {
+  font-size: 0.75em;
+  border: 1.5px solid #d0d7de;
+  border-radius: 9px;
+  padding: 0.4em 0;
+  box-shadow: none;
+}
+.reveal pre.gitdiff span { display: block; padding: 0 0.8em; white-space: pre; }
+.reveal pre.gitdiff .del, .reveal .chip.del { background: #ffebe9; color: #82071e; }
+.reveal pre.gitdiff .add, .reveal .chip.add { background: #dafbe1; color: #116329; }
+.reveal .chip { padding: 0.05em 0.4em; border-radius: 6px; font-size: 0.85em; }
