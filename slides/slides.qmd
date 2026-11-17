@@ -38,7 +38,9 @@ format:
 - Why doesn't my code work anymore?
 
 ::: {.notes}
-These are the real costs. Revisions come back after 6 months and you can't tell what changed. AI tools now edit many lines at once, and it's hard to see what they did unless you have a tool that shows you. Git answers all four questions.
+- Revisions after 6 months: what did I change?
+- AI edits many lines at once: hard to see what it did
+- Git answers all of these
 :::
 
 ## Sound familiar?
@@ -53,7 +55,9 @@ analysis_final_REALLY_old.R
 ```
 
 ::: {.notes}
-Something everyone recognises. Ask: who has a folder like this? Who knows which of these files produced the figures in their last paper? The point is not that this is stupid. It's what everyone does when they have no better tool.
+- Ask: who has a folder like this?
+- Which file made the figures in your last paper?
+- Not stupid: it's what you do without a better tool
 :::
 
 ## With git
@@ -71,9 +75,9 @@ e81c5f3  Submitted version                1 Jun
 ```
 
 ::: {.notes}
-This is the big change in how it feels to work. There is only one analysis.R. You don't keep old copies, because git stores every saved version for you, out of sight. You only ever think about the current file. When you need an old version, you ask git for it.
-
-The codes on the left are the commit IDs, called hashes. Every commit gets a unique one. Usually you see the first 7 characters. You rarely type them, but they're a precise way to point to a version: "the results in the paper come from e81c5f3".
+- Only one `analysis.R`; old versions kept out of sight
+- Left column = commit ID (hash), first 7 characters
+- "Results in the paper come from e81c5f3"
 :::
 
 ## What git gives you
@@ -95,7 +99,9 @@ backup, sync, and sharing
 
 
 ::: {.notes}
-Word users know track changes. Git is the same idea, but for every file in a project folder, and it keeps the full history. GitHub is a website that stores a copy and lets you share it. Be upfront that there is a learning curve. It's a handful of new words and a few buttons, and after that it pays off for the rest of your career.
+- Track changes like Word, but for the whole folder
+- GitHub = a website that keeps a copy and lets you share
+- Be upfront: learning curve, then it pays off
 :::
 
 # Core ideas {background-color="#24292f"}
@@ -118,9 +124,11 @@ for example data, large output and temporary files. One pattern per line:
 ```
 
 ::: {.notes}
-A repository, or repo, is just a normal folder. You keep working in it exactly as before. It's not only for analysis code: papers in LaTeX or Markdown and slides in Quarto or Beamer work just as well, because they're plain text too. These slides are in git. Small, non-sensitive files like a codebook .csv are fine; real data stays out (see the tip).
-
-The tip box (click to open): a .gitignore file tells git which files to leave alone. Useful for data files, big outputs, and clutter like .Rhistory. Ignored files never show up as changes, so you can't commit them by accident. RStudio creates a basic one when you make a project with git.
+- Just a normal folder; work as before
+- Not only code: papers and slides are plain text too
+- These slides are in git
+- Small, non-sensitive `.csv` OK; real data stays out
+- Tip box: `.gitignore` keeps data and clutter out
 :::
 
 ## Where the history lives
@@ -137,7 +145,10 @@ my-project/
 - Your files are the current version; `.git` holds all the earlier ones
 
 ::: {.notes}
-When you turn a folder into a repository (in VS Code: "Initialize Repository"; in RStudio: when you create a project with git, or clone one), git creates a hidden folder called .git inside it. That folder is the whole history. Each commit stores a compressed snapshot of the project. Files that didn't change aren't stored again, so it stays small for code. When you open an old version, git takes it out of .git and puts it back in your folder. Copy the folder, and the history comes along. Delete .git, and it's an ordinary folder again, without history. You may need to turn on "show hidden files" to even see it, and that's fine.
+- Hidden `.git` folder = the whole history
+- Copy the folder: history comes along
+- Delete `.git`: ordinary folder again
+- May need "show hidden files" to see it
 :::
 
 ## Commit
@@ -152,7 +163,9 @@ One commit per change that belongs together:
 - Not once a day, not every line
 
 ::: {.notes}
-A commit is the core concept. It's like pressing save on the whole project, plus writing a note about what you did and why. The right size is one piece of work: adding a covariate, fixing a bug, responding to one reviewer comment. Not "everything I did on Tuesday", because then you can't find or undo one change. Not every single line, because then the history is noise. A good message says what and why: "Adjust for education" is better than "changes".
+- Save for the whole project + a note
+- Right size: one piece of work (a covariate, a bug, a reviewer comment)
+- Message says why: "Adjust for education", not "changes"
 :::
 
 ## Diff
@@ -171,9 +184,9 @@ What changed between two versions.
 - Or between commits: what came in when you pulled
 
 ::: {.notes}
-The diff shows exactly which lines changed, in every file. Most often you see it for your own unsaved-to-git edits: what changed since the last commit. But it works between any two versions. Example: a coauthor pushed three commits while you were away. After you pull, open the history and click their commits to see exactly what they changed since you last worked on the project. VS Code: click a commit in the Graph. RStudio: the History window. GitHub: click a commit, or compare two versions.
-
-You don't need it for every commit of your own: when you made the change yourself, you know what it is. It earns its place when you didn't make every change yourself: after an AI edit, after pulling a coauthor's work, or when you come back after a break and wonder what you were doing.
+- Usually: your edits since the last commit
+- Also between commits: what a coauthor pushed
+- Earns its place when you didn't make every change: AI, coauthor, after a break
 :::
 
 ## Revert, and (optionally) stage
@@ -196,9 +209,10 @@ commit only some changes now, the rest later
 Anything you don't revert stays in your file.
 
 ::: {.notes}
-The diff isn't just for looking. You can act on it, a bit like track changes in Word. Revert, or discard, is like "Reject change": the lines go back to how they were at the last commit. You can do it for a whole file, one block, or single lines. This is how you review an AI edit: revert what you didn't ask for, commit the rest. Careful: a reverted change that was never committed is gone. VS Code and RStudio ask you to confirm.
-
-Staging is optional, and I seldom use it. It's not quite "Accept change": everything you don't revert is already in your file. Staging only chooses what goes into this particular commit. Useful when you made two unrelated changes and want two clean commits: stage one, commit, then commit the rest. If nothing is staged, VS Code just offers to commit everything. RStudio is different: you always tick the files under Staged before committing. Ticking all of them is the normal case, so in practice it's the same: everything goes in unless you choose otherwise.
+- Revert = *Reject change*; file, block or lines
+- Reverted uncommitted change is gone (editor asks first)
+- Staging: optional, I seldom use it
+- RStudio: tick all under *Staged*, the normal case
 :::
 
 ## Revert and stage: the buttons
@@ -211,7 +225,8 @@ Staging is optional, and I seldom use it. It's not quite "Accept change": everyt
 | Commit | nothing staged = commit all | tick *Staged* (usually all) |
 
 ::: {.notes}
-For reference; also in the cheat sheet. Don't read the table out. Point at the last row: in VS Code you can ignore staging completely; in RStudio you tick the files, normally all of them.
+- Reference only, also in the cheat sheet; don't read it out
+- Last row: VS Code can ignore staging; RStudio tick all
 :::
 
 ## The cycle
@@ -228,7 +243,8 @@ For reference; also in the cheat sheet. Don't read the table out. Point at the l
 Check the diff when someone else made changes: an AI or a coauthor.
 
 ::: {.notes}
-That's all there is to working alone. Edit and save as usual, and commit with a message when a piece of work is done. Repeat. When the changes aren't all yours, from an AI tool or a coauthor, look at the diff before you commit or carry on.
+- Working alone: edit, save, commit. Repeat.
+- Check the diff when changes aren't all yours
 :::
 
 ## Your laptop and GitHub
@@ -247,7 +263,10 @@ That's all there is to working alone. Edit and save as usual, and commit with a 
 - Useful alone too: work laptop, home laptop, same project.
 
 ::: {.notes}
-Git runs on your own computer. Everything so far works offline. GitHub is a copy online. Push sends your commits to GitHub. Pull fetches commits from GitHub. Click: the other end can be a coauthor, but just as often it's yourself on another machine: the work laptop and the home laptop, or an old and a new computer. Pull when you sit down, push when you're done, and both machines stay in sync. Git and GitHub are not the same thing: git is the tool, GitHub is one place to store repos.
+- Git works offline; GitHub is the copy online
+- Push = send, pull = fetch
+- Click: other end can be a coauthor or your other computer
+- Git ≠ GitHub: tool vs. one place to store repos
 :::
 
 ## Two ways to start
@@ -279,7 +298,11 @@ create it on GitHub, then clone it
 ```
 
 ::: {.notes}
-There are two ways to get a repository. If you already have a project folder, turn it into a repo where it is: that's "initialize". Git starts watching the folder, nothing is moved or uploaded. But initializing doesn't save anything yet: until the first commit, there is no history and nothing to publish. So make a first commit of everything, then publish it to GitHub when you want a backup. I'll initialize the toy project in demo 1, and publish this workshop's folder in demo 2. If you're starting something new, it's often easier the other way round: create an empty repo on GitHub first, then clone it to your laptop. Then it's already connected, and push and pull just work. That's what you'll do in the exercise. Before initializing an existing folder, add a .gitignore so the data never gets committed.
+- Existing folder: initialize → first commit → publish
+- New project: GitHub first, then clone (already connected)
+- Demo 1: initialize the toy project. Demo 2: publish this workshop
+- Exercise: the clone route
+- Add `.gitignore` before the first commit
 :::
 
 ## Words you need
@@ -295,7 +318,9 @@ There are two ways to get a repository. If you already have a project folder, tu
 | clone | download a repo the first time |
 
 ::: {.notes}
-This is the full vocabulary for today. You'll come across "branch" online: a side version of the project. Useful later, not needed to start. Point to the cheat sheet in the repo.
+- Full vocabulary for today
+- "Branch": side version; later, not needed to start
+- All in the cheat sheet
 :::
 
 # Demo 1: VS Code and RStudio {background-color="#c2410c"}
@@ -316,7 +341,8 @@ This is the full vocabulary for today. You'll come across "branch" online: a sid
 ::::
 
 ::: {.notes}
-Live demo. Follow Demo 1 in workshop-plan.md (run sheet). If the demo fails, use the screenshots. Keep the font large.
+- **DEMO 1 NOW**: run sheet in `workshop-plan.md`
+- Font large; screenshots if it fails
 :::
 
 ## Reviewing AI edits
@@ -329,7 +355,10 @@ Live demo. Follow Demo 1 in workshop-plan.md (run sheet). If the demo fails, use
 :::
 
 ::: {.notes}
-This is maybe the strongest reason to start using git now. AI assistants in VS Code or RStudio can change many files at once. Without git, you have to trust it or read everything again. With git, you commit first, so you always have a safe point to go back to. Then you review the diff like a referee: keep what you asked for, undo the rest. If it all goes wrong, discard everything and you're back where you were.
+- Maybe the strongest reason to start now
+- Commit first = safe point to go back to
+- Review the diff like a referee
+- All wrong? Discard everything
 :::
 
 ## History
@@ -356,7 +385,9 @@ This is maybe the strongest reason to start using git now. AI assistants in VS C
 ::::
 
 ::: {.notes}
-Show the timeline or graph view. Click an old commit and show its diff. Mention that reviewers asking "what did you change?" can now be answered precisely. The tabs on the slide show where the same view is in RStudio.
+- Click an old commit, show its diff
+- Reviewer asks "what did you change?": now you can answer
+- Tabs: same view in RStudio
 :::
 
 ## Same buttons, different places
@@ -382,7 +413,12 @@ Show the timeline or graph view. Click an old commit and show its diff. Mention 
 :::
 
 ::: {.notes}
-Demo 1, RStudio part: open the same toy-project in RStudio. The Git tab is there because git lives in the folder (.git), not in the editor. Show the same history (clock icon), make a small edit and show the diff. If time: show initialize in RStudio on toy-project-rstudio. RStudio only shows the Git pane when the folder is an RStudio project and git was installed before RStudio started. VS Code's Sync Changes does pull and push in one click; RStudio has separate buttons. The second tab is a fallback screenshot of RStudio's diff window: same diff as in VS Code, with Stage chunk and Discard chunk on the right. Stata users: Stata has no git button; open the folder in VS Code.
+- RStudio part of Demo 1: open the same `toy-project`
+- Git tab is there: git lives in the folder, not the editor
+- Same history (clock icon), small edit, *Diff*
+- If time: initialize `toy-project-rstudio`
+- No Git tab: not a project, or RStudio open while git was installed
+- Stata: use VS Code
 :::
 
 # GitHub {background-color="#24292f"}
@@ -395,7 +431,9 @@ Demo 1, RStudio part: open the same toy-project in RStudio. The Git tab is there
 - Backup off your laptop
 
 ::: {.notes}
-Sharing is the main reason. Journals increasingly ask for code, and a link to a GitHub repo is the standard way to give it. Linking the repo to Zenodo gives a citable DOI for the exact version used in the paper. Private repos are free, so you can keep a project private until you're ready.
+- Sharing is the main reason; journals ask for code
+- Zenodo: citable DOI for the exact version
+- Private repos are free
 :::
 
 ## Working with others
@@ -410,7 +448,9 @@ Git asks you to choose.
 :::
 
 ::: {.notes}
-Collaboration is mostly pull before, push after. If two people change the same lines, git can't decide and asks you which version to keep. This is called a merge conflict. It looks scary the first time, but VS Code and RStudio help you through it, and it's rare if you pull often.
+- Mostly: pull before, push after
+- Same line changed by two people = merge conflict
+- Looks scary, editors help, rare if you pull often
 :::
 
 ## Making code public
@@ -426,7 +466,9 @@ Copy the final code into a **new repo**, and make that public
 :::
 
 ::: {.notes}
-When you make a repo public, everyone can see every commit ever made, not only the current files. That includes half-finished code, comments to coauthors, and files you deleted long ago: deleting a file only removes it from new versions, not from the history. Often that's fine. If not, the simple fix is to create a fresh repository, copy in the final version of the code, and publish that one. Keep the original private for your own history.
+- Every commit visible, incl. deleted files and old comments
+- Often fine
+- If not: new repo with the final code; keep the original private
 :::
 
 # Demo 2: GitHub {background-color="#c2410c"}
@@ -441,7 +483,8 @@ When you make a repo public, everyone can see every commit ever made, not only t
 :::
 
 ::: {.notes}
-DEMO 2 NOW. Follow Demo 2 in workshop-plan.md (run sheet). Publish git-demo as public and keep the name, so https://github.com/hafsunde/git-demo works for Exercise 1.
+- **DEMO 2 NOW**: run sheet in `workshop-plan.md`
+- Publish `git-demo` as **public**, keep the name (the clone link)
 :::
 
 # Your turn {background-color="#c2410c"}
@@ -458,7 +501,9 @@ DEMO 2 NOW. Follow Demo 2 in workshop-plan.md (run sheet). Publish git-demo as p
 No GitHub account needed yet. Pairs are fine.
 
 ::: {.notes}
-Four short steps, one slide each. When the clone works, people have the exercises, cheatsheet and slides on their laptop. Then they go on to Exercise 2.
+- One slide per step follows
+- No account needed; pairs fine
+- Clone works → they have exercises, cheat sheet, slides
 :::
 
 ## 1. Install git
@@ -470,7 +515,8 @@ Four short steps, one slide each. When the clone works, people have the exercise
 | Mac | *Terminal* app → type `git --version` → *Install* if asked |
 
 ::: {.notes}
-On a Mac, if git --version prints a version number, git is already there. VS Code users will also use the built-in terminal once, in step 3.
+- Mac: version number printed = already installed
+- VS Code users: terminal once more in step 3
 :::
 
 ## 2. Restart your editor
@@ -483,7 +529,8 @@ On a Mac, if git --version prints a version number, git is already there. VS Cod
 Stata: use VS Code for git.
 
 ::: {.notes}
-The editor only looks for git when it starts. "Git not found" or no Git tab almost always means the editor was open while git was installed.
+- Editor only looks for git at start-up
+- "Git not found" / no Git tab = restart
 :::
 
 ## 3. Tell git who you are {.top}
@@ -517,7 +564,9 @@ git config --global --list   # check
 Use the email you use (or will use) for GitHub. You only do this once per computer.
 
 ::: {.notes}
-VS Code has no button for this, so it's two lines in its built-in terminal. If someone has R, the usethis route works for VS Code users too. Warnings in git_sitrep about tokens are fine for now.
+- VS Code has no button: two lines in the terminal
+- usethis route works for VS Code users with R too
+- Token warnings in `git_sitrep()`: fine for now
 :::
 
 ## 4. Clone the workshop repo {.top}
@@ -550,7 +599,10 @@ VS Code has no button for this, so it's two lines in its built-in terminal. If s
 Not in OneDrive or Dropbox. Then open `participants/exercise-2-github.md`.
 
 ::: {.notes}
-"Clone" means download the repo with its whole history. Anyone can clone a public repo, no login needed. Suggest Documents/GitHub as the folder. Done early: look at the history (Graph in VS Code, clock icon in RStudio) and click a commit.
+- Clone = download with the whole history
+- Public repo: no login needed
+- Suggest `Documents/GitHub`
+- Done early: look at the history, click a commit
 :::
 
 ## Exercise 2: your own repo on GitHub
@@ -566,7 +618,10 @@ Not in OneDrive or Dropbox. Then open `participants/exercise-2-github.md`.
 Steps: `participants/exercise-2-github.md`
 
 ::: {.notes}
-Go on to this when Exercise 1 works; adapt to where people are. One working laptop per pair is enough. People without a working setup can do steps 3 to 5 in the browser on github.com (pencil icon). The most common problem will be the login at the first push.
+- Adapt to where people are
+- One working laptop per pair is enough
+- No setup: steps 3–5 in the browser (pencil icon)
+- Most common problem: login at first push
 :::
 
 # Is it worth it? {background-color="#24292f"}
@@ -594,7 +649,8 @@ Go on to this when Exercise 1 works; adapt to where people are. One working lapt
 ::::
 
 ::: {.notes}
-Say this plainly. It took me a while too. The fix is to just use it on one real project, every day, for a couple of weeks. After that, you won't want to work without it.
+- It took me a while too
+- Use it on one real project, every day, for two weeks
 :::
 
 ## Tips
@@ -606,7 +662,9 @@ Say this plainly. It took me a while too. The fix is to just use it on one real 
 - No repos inside OneDrive/Dropbox
 
 ::: {.notes}
-Word, Excel and .dta files can be committed but git can't show what changed inside them. One sentence per line in LaTeX and Markdown makes diffs readable, since git compares lines. OneDrive and Dropbox sync and git interfere with each other; keep repos in a plain local folder like Documents/GitHub. Overleaf can sync with GitHub but only on a paid plan.
+- Word, Excel, `.dta`: tracked, but no readable diff
+- One sentence per line: git compares lines
+- OneDrive/Dropbox fight with git: use `Documents/GitHub`
 :::
 
 ## An idea for TSD
@@ -632,25 +690,39 @@ A small script makes fake data with the same columns, so the server scripts run 
 ```
 
 ::: {.notes}
-One way to do it, not the only way. Git can be installed on TSD, and it works there for tracking changes and history. But TSD can't reach GitHub, so there's no push or pull, no backup off the server, and no sharing. I don't use it there. Instead I keep a mirror of the pipeline locally: the server scripts live in a folder in my local repo. I edit them there, copy the folder to TSD, run it, and export the aggregate results back into the repo. Local scripts turn them into figures and tables. A bonus: a small script that makes fake data with the same columns lets me run the server scripts locally, and build figures before the real results exist. The expandable box is for people reading the slides afterwards.
+- One way, not the only way
+- Git works on TSD, but no GitHub: no push, backup or sharing
+- My setup: server scripts in a local repo → copy in → run → aggregate results back
+- Bonus: fake data with the same columns, so scripts run locally
+- Expandable box is for people reading later
 :::
 
 ## Learn more
 
 - *Happy Git and GitHub for the useR*: [happygitwithr.com](https://happygitwithr.com)
 - GitHub Docs: [docs.github.com](https://docs.github.com)
-- This workshop: `participants/cheatsheet.md`
+- This workshop: [github.com/hafsunde/git-demo](https://github.com/hafsunde/git-demo) (cheat sheet in `participants/`)
 
 ::: {.callout-note appearance="simple"}
 Most guides use the command line. Same git, typed instead of clicked.
 :::
 
 ::: {.notes}
-Happy Git with R by Jenny Bryan is written exactly for this audience. Today I used buttons in VS Code and RStudio to keep things simple, but everything can also be done by typing commands, and many people prefer that. Most guides and Stack Overflow answers show commands. Don't let that put you off: it's the same git underneath, and the buttons do the same thing. Add the link to this repo once it's on GitHub.
+- Happy Git with R (Jenny Bryan): written for this audience
+- Most guides use commands: same git, typed instead of clicked
 :::
 
 # Questions? {background-color="#24292f"}
 
 ::: {.notes}
-Possible questions: Can I use git on TSD? (yes, it can be installed; I keep a local mirror instead). What about Stata? (VS Code). Does it work with Overleaf? (paid plan, or keep LaTeX locally). Should I learn the command line? (not to start; maybe later).
+Possible questions, short answers:
+
+- **Git on TSD?** Can be installed; I keep a local mirror
+- **Stata?** No git button; use VS Code
+- **Overleaf?** Syncs with GitHub on a paid plan; or write LaTeX locally
+- **Command line?** Not to start; same git, maybe later
+- **OneDrive/Dropbox?** Don't put repos there; they fight
+- **Word/Excel?** Tracked, but no readable diff; plain text works best
+- **Branches?** Side versions; useful later, not needed to start
+- **Citing code?** GitHub + Zenodo gives a DOI
 :::
