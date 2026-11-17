@@ -1,179 +1,33 @@
-# Workshop plan: Git and GitHub for researchers
+# Demo run sheet
 
-Working document. Edit freely. Fields marked `DECISION:` are open; tick `[ ]` boxes as you go.
+18 November 2026, 15:00, 60 min. Slides: press `S` for speaker notes.
 
----
+## Before
 
-## 1. Decision log
+- [ ] Copy `example-project/` to `Documents/GitHub/toy-project` (VS Code) and `Documents/GitHub/toy-project-rstudio` (RStudio). Don't initialize. Delete any old `toy-project` repo on GitHub.
+- [ ] Logged in to github.com in the browser and in VS Code (*Accounts*, bottom left).
+- [ ] Large font, notifications off, charger and adapter.
 
-| Item | Decision |
-|---|---|
-| Event | CeFH Ung · 2nd Annual Young Researchers Workshop |
-| Date, time | 18 November 2026, 15:00 (60 min) |
-| Room | DECISION: ___ |
-| Title | DECISION: *Git and GitHub for researchers* / other: ___ |
-| Subtitle | DECISION: *Track changes for your code, and a place to share it* / other: ___ |
-| Online / in person / hybrid | DECISION: ___ |
-| Record the session? | DECISION: yes / no |
-| Demo repo name on GitHub | DECISION: e.g. `toy-project` |
-| Demo repo public or private | DECISION: public (easier to share) / private |
-| Make demo repo a template for participants? | DECISION: yes / no |
-| Exercise variant (see §5) | DECISION: A (own new repo) / B (from template) |
-| Publish slides on GitHub Pages? | DECISION: yes / no |
-| Setup | Done in the session as Exercise 1, on the slides (no email beforehand). Participants clone this workshop repo, published publicly in Demo 2 |
-| Follow-up channel after workshop | DECISION: Teams/Slack channel / office hour / none |
+## Demo 1: VS Code
 
----
+1. Open `toy-project`. *Initialize Repository*. Point at `.gitignore`. Commit all: "First version".
+2. `analysis.R`: add `+ education`, save, run (0.90 → 0.09). Show the diff. Commit: "Adjust for education".
+3. AI edit ("add input checks and tidy the script"). Read the diff, revert one block, commit the rest.
+4. History: *Graph* or *Timeline*, click an old commit.
 
-## 2. Learning goals
+## Demo 2: GitHub and RStudio
 
-After the hour, participants can:
+1. *Publish Branch* `toy-project`. Show commits and a diff on github.com.
+2. Open `git-demo` in VS Code, *Publish Branch* → **public**, keep the name `git-demo`. *"This is the link you'll clone."*
+3. On github.com: edit `README.md` of `toy-project` (pencil), *Commit changes*.
+4. RStudio: open `toy-project-rstudio`, *Tools → Version Control → Project Setup → Git*, first commit.
+5. RStudio: open `toy-project`, *Pull*, change something, commit, *Push*.
 
-1. Explain what a commit is, and why one `analysis.R` with a history beats `analysis_final_v3.R`.
-2. See what changed in a file (a diff), and use it to review their own and AI edits.
-3. Push to and pull from GitHub, from VS Code or RStudio.
-4. Share code on GitHub, knowing that the whole history goes along.
+## Exercises
 
-Main message: **the first week is annoying, after that it saves you time and nerves.**
+Exercise 1 on the slides (install, restart, who you are, clone). Exercise 2 in `participants/exercise-2-github.md`.
+Pairs are fine. No working setup: Exercise 2 in the browser (pencil icon). Common problems: editor not restarted after installing git; login at first push.
 
-Scope: no command line (a choice to keep it simple; mention once that it exists). No branches. Data protection only where it touches git (history is permanent).
+## If something fails
 
----
-
-## 3. Agenda (60 min)
-
-| Min | Block | Mode | Slides |
-|---|---|---|---|
-| 0–5 | Why bother: many files vs one file with history | Talk | 1–6 |
-| 5–15 | Core ideas: repo, `.git` folder, commit, diff, the cycle, laptop vs GitHub | Talk + diagram | 7–14 |
-| 15–25 | Demo 1, VS Code: edit, diff, commit, AI edit review, history | Live demo | 15–18 |
-| 25–32 | GitHub: sharing, coauthors, making code public. Demo 2: same in RStudio | Talk + live demo | 19–23 |
-| 32–47 | Hands-on: Exercise 1 (setup), then Exercise 2 (GitHub) | Exercise | 24–25 |
-| 47–56 | It's a hurdle, it's worth it. Tips. Idea for secure servers. Learn more | Talk | 26–30 |
-| 56–60 | Questions | | 31 |
-
-Adapt on the day: if setup is slow, let people pair up and do Exercise 2 on one working laptop, or in the browser.
-
-DECISION: Show a merge conflict (30 s, to defuse fear)? yes / no (currently only mentioned in words)
-
----
-
-## 4. Demo script
-
-### Prepare the demo repo (day before)
-
-- [ ] Copy `example-project/` twice to folders outside this repo: `Documents/GitHub/toy-project` (main demo, VS Code) and `Documents/GitHub/toy-project-rstudio` (only for showing initialize in RStudio). Don't initialize either: that happens live.
-- [ ] Do a full dry run, then delete both copies' `.git` folders (hidden) and any `toy-project` repo on GitHub, so you start clean.
-- [ ] Prepare the "AI edit" for demo 1. Either do it live with Copilot/Claude, or have the change ready in a text file to paste. DECISION: live AI / pasted
-- [ ] Be logged in to github.com in the browser, and to GitHub in VS Code (*Accounts* icon, bottom left), so publishing doesn't stall on a login.
-- [ ] Take fallback screenshots of each step into `slides/img/`.
-- [ ] Close other windows, large font in VS Code and RStudio (Ctrl + `+`), turn off notifications.
-
-### Demo 1: VS Code (10 min)
-
-1. Open the toy project folder (*File → Open Folder*). Point at the Source Control icon (left bar): it says the folder is not a repository yet.
-2. **Initialize.** Click *Initialize Repository*. All files appear as new (`U`). *"Git is now watching this folder. Nothing is uploaded."* Point at `.gitignore`: data files will never show up here.
-   Commit everything with message "First version" (click *Yes* when asked about staging).
-3. Change one line in `analysis.R`: add `+ education` to the model. Save. Run it: the estimate for age at first birth drops from 0.90 to 0.09. *"Most of the association was education."*
-4. Show: the file gets an `M`, click it, side-by-side diff. *"This is track changes for code."*
-5. Write message "Adjust for education", click *Commit*. The file is clean again.
-6. **AI edit.** Ask the AI assistant to "add input checks and tidy the script". It changes many lines.
-7. Open the diff. Walk through it. Undo one change you didn't ask for: in the editor, click the coloured bar in the left margin → *Revert* (or use the AI tool's own keep/undo buttons). Commit the rest.
-   *Point: commit before you let AI touch your code, then review the diff like a referee.*
-8. Show history: *Graph* in Source Control, or *Timeline* at the bottom of the Explorer. Click an old commit, see what it changed.
-
-### Demo 2: GitHub and RStudio (7 min)
-
-1. In VS Code: *Publish Branch*, choose private/public per §1. *"The folder existed first; now it gets a copy on GitHub. In the exercise you'll start the other way round: on GitHub first."*
-   Then open this workshop repo (`git-demo`) in VS Code and *Publish Branch* → **public**. Show it on github.com: *"This is the link you'll clone in Exercise 1."*
-2. On github.com: open the new repo, show the list of commits, click one, same diff in the browser.
-3. Show *Settings → Collaborators* (just point, don't add).
-4. Play the collaborator: open `README.md` on github.com, pencil icon, change a line, *Commit changes*.
-5. **Initialize in RStudio.** Open `toy-project-rstudio/toy-project.Rproj`. No Git tab yet. *Tools → Version Control → Project Setup*, set *Version control system* to *Git*, confirm twice. RStudio restarts and a **Git** tab appears, files marked `?`. *"Same thing as Initialize in VS Code, different buttons."* Make the first commit: tick all files under *Staged*, *Commit*, message "First version". Leave this copy here.
-6. *File → Open Project* → `toy-project/toy-project.Rproj` (the published one). Git tab, top right.
-7. *Pull* (blue arrow) to get the change made on the web.
-8. Tick a file, *Commit*, write message, *Push* (green arrow). Same ideas, different buttons.
-
-### If something fails
-
-- No internet: switch to screenshots, keep talking.
-- Login prompt appears: that is actually a good teaching moment ("this is what you'll see the first time").
-
----
-
-## 5. Hands-on (15 min)
-
-Full steps in [participants/exercise-1-setup.md](participants/exercise-1-setup.md) (Exercise 1, also on the slides: install git, `use_git_config`, clone this workshop repo) and [participants/exercise-2-github.md](participants/exercise-2-github.md) (Exercise 2: the variant below).
-
-- **Variant A**: create a new repo on github.com (with README), clone it, edit README, commit, push, see it online.
-- **Variant B**: "Use this template" on the demo repo, clone, make a change in `analysis.R`, commit, push.
-
-DECISION: A / B. A is safer (fewer moving parts).
-
-- [ ] Ask people to sit in pairs, so one working laptop per pair is enough.
-- [ ] Fallback for those without git: do the edit-and-commit on github.com in the browser (pencil icon).
-- [ ] Bonus for fast people: edit on the web and pull it down; add a `.gitignore`.
-
----
-
-## 6. Key messages, one per block
-
-Keep slides to these; the rest goes in speaker notes.
-
-- **Why**: "One `analysis.R`. Git keeps the old versions for you."
-- **Commit**: "One commit per change that belongs together. Not once a day, not every line."
-- **Diff**: "Shows exactly what changed. Check it when the changes aren't all yours: AI or coauthor."
-- **Local vs GitHub**: "Git lives on your machine. GitHub is the shared copy, for coauthors and for your other computers."
-- **AI**: "Commit first, let the AI edit, then read the diff."
-- **Sharing**: "GitHub is where code goes with the paper. A public repo shows the whole history; start a fresh repo if needed."
-- **Worth it**: "Painful for a week. Useful for the rest of your career."
-
----
-
-## 7. Making code public (talk notes, slide 22)
-
-- A public repo shows every commit, not only the current files.
-- That includes old drafts, comments, and deleted files. Deleting a file only removes it from new versions.
-- Simple fix: make a new repo, copy in the final code, publish that one. Keep the original private.
-- Zenodo + GitHub gives a DOI for the exact version used in the paper.
-
-## 8. Idea for secure servers (talk notes, slide 29)
-
-Short, near the end. One way to do it, not a recommendation everyone must follow.
-
-- Git can be installed on TSD, but I don't use it there.
-- Instead: the server scripts live in a folder in the local repo (`TSD/` or `on_server/`). Edit there, copy to TSD, run, export aggregate results back.
-- Fake data with the same columns lets me run the server scripts locally and build figures before real results exist.
-- (`example-project/` is now just a single regression script, not a TSD layout example.)
-
-DECISION: Why I don't use git on TSD (one line for the slide notes): ___
-
----
-
-## 9. Things to mention briefly (pick some)
-
-- [ ] Everything today can also be done from the command line. Most guides online use it. Same git underneath. (On "Learn more" slide.)
-- [ ] Don't put a git repo inside OneDrive/Dropbox; they fight.
-- [ ] Word/Excel/.dta files are tracked but can't be compared line by line. Plain text (R, .do, .tex, .md) works best.
-- [ ] LaTeX/Markdown: one sentence per line gives readable diffs.
-- [ ] Stata has no git button: use VS Code on the project folder.
-- [ ] Overleaf can sync with GitHub, but only on a paid plan.
-- [ ] Branches exist; you don't need them to start.
-
----
-
-## 10. Pre-workshop checklist
-
-- [ ] Before publishing the workshop repo: decide whether this file (`workshop-plan.md`) should be public.
-- [ ] Test the setup instructions on a Mac if any participants use one. Who can test: ___
-- [ ] Prepare demo repo (§4).
-- [ ] Render slides, check speaker notes (press `S`).
-- [ ] Fill in screenshots in `slides/img/`.
-- [ ] Do the exercise once yourself, in both VS Code and RStudio, with a timer.
-- [ ] Laptop charger, HDMI/USB-C adapter.
-
-## 11. After the workshop
-
-- [ ] Share link to this repo / the slides.
-- [ ] Follow-up: ___
-- [ ] Note what to change next time: ___
+No internet: screenshots in `slides/img/`. Login prompt: show it, it's what they'll see too.

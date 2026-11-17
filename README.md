@@ -15,5 +15,5 @@ Everything is done with the buttons in VS Code and RStudio.
 
 ## For the presenter
 
-- [workshop-plan.md](workshop-plan.md): agenda, demo script, open decisions and checklist.
+- [workshop-plan.md](workshop-plan.md): short run sheet for the demos.
 - Render slides: open `slides/slides.qmd` in RStudio/VS Code and click *Render*. Press `S` in the browser for speaker notes.
