@@ -177,6 +177,45 @@ The diff shows exactly which lines changed, in every file. Most often you see it
 You don't need it for every commit of your own: when you made the change yourself, you know what it is. It earns its place when you didn't make every change yourself: after an AI edit, after pulling a coauthor's work, or when you come back after a break and wonder what you were doing.
 :::
 
+## Revert, and (optionally) stage
+
+::: {.def}
+Go through the diff like track changes in Word.
+:::
+
+:::: {.cards}
+::: {}
+**Revert ✗**
+like *Reject change*: back to the last commit
+:::
+::: {}
+**Stage (optional)**
+commit only some changes now, the rest later
+:::
+::::
+
+- Anything you don't revert stays in your file
+- Nothing staged? Commit takes all changes. That's the usual case.
+
+```{=html}
+<details><summary>Where the buttons are</summary>
+<table>
+<thead><tr><th></th><th>VS Code</th><th>RStudio</th></tr></thead>
+<tbody>
+<tr><td>Whole file</td><td><b>+</b> (stage) or curved arrow (discard) next to the file</td><td>Tick <i>Staged</i>, or <i>More → Revert</i></td></tr>
+<tr><td>One block</td><td>Open the diff, buttons next to the block</td><td><i>Diff</i> → <i>Stage chunk</i> / <i>Discard chunk</i></td></tr>
+<tr><td>Some lines</td><td>Select lines, right-click → <i>Stage / Revert Selected Ranges</i></td><td>Select lines → <i>Stage selection</i> / <i>Discard selection</i></td></tr>
+</tbody>
+</table>
+</details>
+```
+
+::: {.notes}
+The diff isn't just for looking. You can act on it, a bit like track changes in Word. Revert, or discard, is like "Reject change": the lines go back to how they were at the last commit. You can do it for a whole file, one block, or single lines. This is how you review an AI edit: revert what you didn't ask for, commit the rest. Careful: a reverted change that was never committed is gone. VS Code and RStudio ask you to confirm.
+
+Staging is optional, and I seldom use it. It's not quite "Accept change": everything you don't revert is already in your file. Staging only chooses what goes into this particular commit. Useful when you made two unrelated changes and want two clean commits: stage one, commit, then commit the rest. If nothing is staged, VS Code just offers to commit everything. RStudio does need you to tick the files, but ticking all of them is the normal case.
+:::
+
 ## The cycle
 
 ```{=html}
@@ -251,6 +290,7 @@ There are two ways to get a repository. If you already have a project folder, tu
 | repository | the project folder |
 | commit | saved snapshot + note |
 | diff | what changed |
+| stage | (optional) pick which changes go in the next commit |
 | push | send commits to GitHub |
 | pull | get commits from GitHub |
 | clone | download a repo the first time |
@@ -287,7 +327,7 @@ Live demo. Follow the demo script in workshop-plan.md section 4. If the demo fai
 1. **Commit** before the AI starts
 2. Let it edit
 3. **Read the diff**
-4. Keep what you asked for, undo the rest
+4. **Revert** what you didn't ask for, commit the rest
 :::
 
 ::: {.notes}

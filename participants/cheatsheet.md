@@ -9,7 +9,7 @@
 | diff | What changed: red removed, green added |
 | hash | A commit's unique ID, e.g. `e81c5f3` |
 | `.git` | Hidden folder inside the project that holds the history |
-| stage | Choose which changes go into the next commit |
+| stage | Optional: choose which changes go into the next commit. Skip it and the commit takes all changes |
 | push | Send your commits to GitHub |
 | pull | Get new commits from GitHub |
 | clone | Download a repo from GitHub the first time |
@@ -56,6 +56,7 @@ Look at the **diff** when you didn't make every change yourself: after an AI edi
 | Push / pull | *Sync Changes* | Green arrow / blue arrow |
 | History | *Graph* in Source Control, or *Timeline* | Clock icon |
 | Throw away unsaved-to-git changes | Curved arrow next to the file (*Discard*) | *More → Revert* |
+| Keep or throw away part of a file | In the diff: buttons next to each block, or select lines → right-click → *Stage / Revert Selected Ranges* | *Diff* → *Stage chunk* / *Discard chunk*, or select lines → *Stage selection* / *Discard selection* |
 | Undo last commit (not pushed) | `…` menu → *Commit → Undo Last Commit* | Ask for help, or use VS Code |
 
 Stata: Stata has no git button. Open the project folder in VS Code and use it for git.
