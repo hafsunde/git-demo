@@ -1,6 +1,6 @@
 # Screenshots
 
-Used in `slides.qmd`, and as a fallback if the live demo fails.
+Used in `slides_en.qmd` and `slides_no.qmd`, and as a fallback if the live demo fails.
 
 | File | Shows | Slide |
 |---|---|---|
