@@ -22,7 +22,7 @@ format:
 #   .flow / .box / .arrow   box-and-arrow diagrams (raw HTML)
 #   <details>      expandable box, for people reading the slides later
 #   {.top}         on a slide title: don't centre the content vertically
-# Divider colours: #24292f ($primary) = new topic, #c2410c ($app) = switch to the app.
+# Divider slides: all #24292f ($primary). Add {.app} for "switch to the app" (demos, Your turn): title in $app.
 # These hex codes must match the palette block in custom.scss.
 ---
 
@@ -105,6 +105,24 @@ backup, sync, and sharing
 :::
 
 # Core ideas {background-color="#24292f"}
+
+## Words you need
+
+| Word | Means |
+|---|---|
+| repository | the project folder |
+| commit | saved snapshot + note |
+| diff | what changed |
+| stage | (optional) pick which changes go in the next commit |
+| push | send commits to GitHub |
+| pull | get commits from GitHub |
+| clone | download a repo the first time |
+
+::: {.notes}
+- Full vocabulary for today; each one comes next
+- "Branch": side version; later, not needed to start
+- All in the cheat sheet
+:::
 
 ## Repository
 
@@ -305,25 +323,7 @@ create it on GitHub, then clone it
 - Add `.gitignore` before the first commit
 :::
 
-## Words you need
-
-| Word | Means |
-|---|---|
-| repository | the project folder |
-| commit | saved snapshot + note |
-| diff | what changed |
-| stage | (optional) pick which changes go in the next commit |
-| push | send commits to GitHub |
-| pull | get commits from GitHub |
-| clone | download a repo the first time |
-
-::: {.notes}
-- Full vocabulary for today
-- "Branch": side version; later, not needed to start
-- All in the cheat sheet
-:::
-
-# Demo 1: VS Code and RStudio {background-color="#c2410c"}
+# Demo 1: VS Code and RStudio {.app background-color="#24292f"}
 
 ## What I'll show
 
@@ -354,11 +354,20 @@ create it on GitHub, then clone it
 4. **Revert** what you didn't ask for, commit the rest
 :::
 
+```{=html}
+<details class="tip"><summary>Tip: AI tools can read your project's history</summary>
+In a git repo, tools like Claude Code can see every commit and every change.
+Ask "what changed since the submitted version?" or "when did this result change, and why?".
+They can also commit, push or revert for you. You still read the diff.
+</details>
+```
+
 ::: {.notes}
 - Maybe the strongest reason to start now
 - Commit first = safe point to go back to
 - Review the diff like a referee
 - All wrong? Discard everything
+- Tip box: in a git repo, Claude Code etc. can read the whole history: ask what changed and why. Can also commit/push/revert
 :::
 
 ## History
@@ -455,6 +464,8 @@ Git asks you to choose.
 
 ## Making code public
 
+Anyone can **clone** and **pull**. Only you and invited coauthors can **push**.
+
 ::: {.callout-warning}
 ## A public repo shows the whole history
 Old versions, old comments, files you deleted
@@ -466,12 +477,13 @@ Copy the final code into a **new repo**, and make that public
 :::
 
 ::: {.notes}
+- Public = read-only for others; nobody can change your repo
 - Every commit visible, incl. deleted files and old comments
 - Often fine
 - If not: new repo with the final code; keep the original private
 :::
 
-# Demo 2: GitHub {background-color="#c2410c"}
+# Demo 2: GitHub {.app background-color="#24292f"}
 
 ## What I'll show
 
@@ -487,7 +499,7 @@ Copy the final code into a **new repo**, and make that public
 - Publish `git-demo` as **public**, keep the name (the clone link)
 :::
 
-# Your turn {background-color="#c2410c"}
+# Your turn {.app background-color="#24292f"}
 
 ## Exercise 1: set up git and clone this workshop
 
@@ -626,30 +638,28 @@ Steps: `participants/exercise-2-github.md`
 
 # Is it worth it? {background-color="#24292f"}
 
-## It's a hurdle
+## What you get
 
-:::: {.columns}
-::: {.column width="50%"}
-::: {.callout-caution appearance="simple" icon="false"}
-## First week
-- New words, new buttons
-- The first login is fiddly
-- You'll feel slower
+::: {.cards}
+::: {}
+**Overview**
+every change and every version, with a note on why
+:::
+::: {}
+**AI that you can check**
+commit first, read the diff; AI can read the history too
+:::
+::: {}
+**Easy to share**
+one link for coauthors, journals, or the public
 :::
 :::
-::: {.column width="50%" .fragment}
-::: {.callout-tip appearance="simple" icon="false"}
-## Then
-- You never lose work
-- You can review changes
-- Much better integration with AI
-- Your code is ready to share
-:::
-:::
-::::
 
 ::: {.notes}
-- It took me a while too
+- Say it: the first week or two is a struggle, it took me a while too
+- Overview: no more `_final_v2`; any old version, with a note
+- AI: commit, edit, read the diff; ask it about the history
+- Sharing: invite coauthors, or publish with the paper
 - Use it on one real project, every day, for two weeks
 :::
 
@@ -680,8 +690,8 @@ Steps: `participants/exercise-2-github.md`
 ```
 
 - Keep a copy of the TSD scripts in a local repo
-- Edit there, copy to TSD, run, bring results back
-- Git also works on TSD, just not connected to GitHub
+- Only aggregate results leave TSD
+- Git also works on TSD, just not connected to GitHub or AI
 
 ```{=html}
 <details><summary>Bonus: test locally with fake data</summary>
@@ -691,25 +701,10 @@ A small script makes fake data with the same columns, so the server scripts run 
 
 ::: {.notes}
 - One way, not the only way
-- Git works on TSD, but no GitHub: no push, backup or sharing
+- Git works on TSD, but no GitHub or AI: no push, backup, sharing or AI help
 - My setup: server scripts in a local repo → copy in → run → aggregate results back
 - Bonus: fake data with the same columns, so scripts run locally
 - Expandable box is for people reading later
-:::
-
-## Learn more
-
-- *Happy Git and GitHub for the useR*: [happygitwithr.com](https://happygitwithr.com)
-- GitHub Docs: [docs.github.com](https://docs.github.com)
-- This workshop: [github.com/hafsunde/git-demo](https://github.com/hafsunde/git-demo) (cheat sheet in `participants/`)
-
-::: {.callout-note appearance="simple"}
-Most guides use the command line. Same git, typed instead of clicked.
-:::
-
-::: {.notes}
-- Happy Git with R (Jenny Bryan): written for this audience
-- Most guides use commands: same git, typed instead of clicked
 :::
 
 # Questions? {background-color="#24292f"}
@@ -725,4 +720,5 @@ Possible questions, short answers:
 - **Word/Excel?** Tracked, but no readable diff; plain text works best
 - **Branches?** Side versions; useful later, not needed to start
 - **Citing code?** GitHub + Zenodo gives a DOI
+- **Learn more?** Happy Git with R; links at the end of Exercise 2
 :::

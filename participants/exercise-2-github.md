@@ -110,3 +110,11 @@ Do steps 1, 3 and 4 directly on github.com: open `README.md`, click the pencil i
 | "Please tell me who you are" | Do Exercise 1, step 3. |
 | Push asks for a password | GitHub doesn't accept your password here. Use the browser login, or a token (see *Before you start*). |
 | "Updates were rejected" | Someone (maybe you, on the web) changed GitHub first. Pull, then push. |
+
+## Learn more
+
+- *Happy Git and GitHub for the useR*: <https://happygitwithr.com>. Written for R users like you.
+- GitHub Docs: <https://docs.github.com>
+- The cheat sheet: `participants/cheatsheet.md`
+
+Most guides use the command line. It's the same git, typed instead of clicked.

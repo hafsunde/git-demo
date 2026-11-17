@@ -7,7 +7,7 @@ $primary:   #24292f;  // header band, section dividers, title slide
 $accent:    #0969da;  // lines, numbered steps, card tops, box borders
 $highlight: #fd8c73;  // the thin stripe under headers, title underline
 $hub:       #0969da;  // "GitHub" box in diagrams
-$app:       #c2410c;  // warm divider slides: demos and "Your turn"
+$app:       #f0845c;  // terracotta title on dark divider slides: demos and "Your turn"
 $alert:     #cf222e;  // "secure server" box in diagrams
 $ink:       #1f2328;  // body text
 $muted:     #59636e;  // secondary text
@@ -198,3 +198,6 @@ $code-block-font-size: 0.95em;
 .reveal pre.gitdiff .del, .reveal .chip.del { background: #ffebe9; color: #82071e; }
 .reveal pre.gitdiff .add, .reveal .chip.add { background: #dafbe1; color: #116329; }
 .reveal .chip { padding: 0.05em 0.4em; border-radius: 6px; font-size: 0.85em; }
+
+/* Divider slides for "switch to the app": dark background, terracotta title */
+.reveal .slides section.app.level1 h1 { color: $app; }

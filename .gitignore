@@ -1,6 +1,4 @@
 # Quarto output
-slides/*.html
-slides/*_files/
 /.quarto/
 _site/
 
