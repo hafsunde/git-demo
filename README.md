@@ -11,7 +11,7 @@ Everything is done with the buttons in VS Code and RStudio.
 | [participants/exercise.md](participants/exercise.md) | The hands-on exercise (VS Code or RStudio). |
 | [participants/cheatsheet.md](participants/cheatsheet.md) | One page: the words, and which button does what. |
 | [slides/](slides/) | The slides (Quarto). |
-| [example-project/](example-project/) | A toy project laid out like a real secure-server project. |
+| [example-project/](example-project/) | A toy project for the demo: one simple regression script. |
 
 ## For the presenter
 

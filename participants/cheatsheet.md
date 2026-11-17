@@ -17,6 +17,26 @@
 | branch | A side version of the project (not needed to start) |
 | conflict | You and someone else changed the same line; you choose which to keep |
 
+## Start a repo
+
+There are two ways. Either way, add a `.gitignore` (see below) before your first commit, so data files are never tracked.
+
+**A. New project: start on GitHub, then clone.** The easiest route, because the link to GitHub is set up for you.
+
+1. github.com: **+** → *New repository*. Choose *Private*, tick *Add a README file*, click *Create repository*.
+2. Click the green **Code** button and copy the HTTPS link.
+3. Clone it:
+   - VS Code: Source Control → *Clone Repository*, paste the link, choose a folder.
+   - RStudio: *File → New Project → Version Control → Git*, paste the link, choose a folder.
+
+**B. Folder you already have: initialize it.** Git starts tracking the folder where it is. Nothing is moved or uploaded.
+
+| | VS Code | RStudio |
+|---|---|---|
+| Initialize | *File → Open Folder*, then Source Control → *Initialize Repository* | Open the project (`.Rproj`), then *Tools → Version Control → Project Setup* → *Git*. RStudio restarts with a Git tab. No `.Rproj` yet? *File → New Project → Existing Directory* first. |
+| First commit | Message `First version` → *Commit* (click *Yes* when asked about staging) | Tick all files under *Staged* → *Commit* |
+| Put it on GitHub | *Publish Branch*, choose private or public | No button. In the R console: `usethis::use_github(private = TRUE)` |
+
 ## The daily cycle
 
 1. **Pull** when you start
@@ -67,7 +87,7 @@ data/
 ## Good habits
 
 - Small commits, often
-- Messages that say why (`Adjust for birth year`, not `changes`)
+- Messages that say why (`Adjust for education`, not `changes`)
 - Plain text files work best: `.R`, `.do`, `.tex`, `.md`, `.qmd`
 - LaTeX and Markdown: one sentence per line
 - Keep repos in a normal folder, not OneDrive/Dropbox

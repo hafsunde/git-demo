@@ -35,6 +35,7 @@ format:
 - Which version of the code made Figure 2?
 - What exactly did the AI just change?
 - Which version does my coauthor have?
+- Why doesn't my code work anymore?
 
 ::: {.notes}
 These are the real costs. Revisions come back after 6 months and you can't tell what changed. AI tools now edit many lines at once, and it's hard to see what they did unless you have a tool that shows you. Git answers all four questions.
@@ -92,9 +93,6 @@ backup, sync, and sharing
 :::
 :::
 
-::: {.callout-caution .fragment appearance="simple" icon="false"}
-Honest: the first week is annoying.
-:::
 
 ::: {.notes}
 Word users know track changes. Git is the same idea, but for every file in a project folder, and it keeps the full history. GitHub is a website that stores a copy and lets you share it. Be upfront that there is a learning curve. It's a handful of new words and a few buttons, and after that it pays off for the rest of your career.
@@ -116,7 +114,7 @@ A project folder that git keeps an eye on.
 <details class="tip"><summary>Tip: tell git what to ignore with <code>.gitignore</code></summary>
 A text file called <code>.gitignore</code> in the project folder lists files git should never track,
 for example data, large output and temporary files. One pattern per line:
-<code>*.rds</code> <code>*.dta</code> <code>data/</code> <code>.Rhistory</code>
+<code>*.rds</code> <code>*.dta</code> <code>temp_*</code> <code>data/</code> <code>.Rhistory</code>
 </details>
 ```
 
@@ -155,7 +153,7 @@ One commit per change that belongs together:
 - Not once a day, not every line
 
 ::: {.notes}
-A commit is the core concept. It's like pressing save on the whole project, plus writing a note about what you did and why. The right size is one piece of work: adding a covariate, fixing a bug, responding to one reviewer comment. Not "everything I did on Tuesday", because then you can't find or undo one change. Not every single line, because then the history is noise. A good message says what and why: "Adjust for birth year" is better than "changes".
+A commit is the core concept. It's like pressing save on the whole project, plus writing a note about what you did and why. The right size is one piece of work: adding a covariate, fixing a bug, responding to one reviewer comment. Not "everything I did on Tuesday", because then you can't find or undo one change. Not every single line, because then the history is noise. A good message says what and why: "Adjust for education" is better than "changes".
 :::
 
 ## Diff
@@ -165,7 +163,7 @@ What changed between two versions.
 :::
 
 ```{=html}
-<pre class="gitdiff"><span class="del">-  fit &lt;- glm(asthma ~ exposed + sex,</span><span class="add">+  fit &lt;- glm(asthma ~ exposed + sex + birth_year,</span><span>               data = data, family = binomial)</span></pre>
+<pre class="gitdiff"><span>   # Is age at first birth associated with health?</span><span class="del">-  fit &lt;- lm(health ~ age_first_birth, data = dat)</span><span class="add">+  fit &lt;- lm(health ~ age_first_birth + education, data = dat)</span><span>   summary(fit)</span></pre>
 ```
 
 [− removed]{.chip .del} [+ added]{.chip .add}
@@ -215,6 +213,37 @@ That's all there is to working alone. Edit and save as usual, and commit with a 
 Git runs on your own computer. Everything so far works offline. GitHub is a copy online. Push sends your commits to GitHub. Pull fetches commits from GitHub. Click: the other end can be a coauthor, but just as often it's yourself on another machine: the work laptop and the home laptop, or an old and a new computer. Pull when you sit down, push when you're done, and both machines stay in sync. Git and GitHub are not the same thing: git is the tool, GitHub is one place to store repos.
 :::
 
+## Two ways to start
+
+:::: {.cards}
+::: {}
+**Folder you already have**
+initialize it, then publish to GitHub
+:::
+::: {}
+**New project**
+create it on GitHub, then clone it
+:::
+::::
+
+```{=html}
+<details><summary>Where the buttons are</summary>
+<table>
+<thead><tr><th></th><th>VS Code</th><th>RStudio</th></tr></thead>
+<tbody>
+<tr><td>Initialize a folder</td><td>Source Control → <i>Initialize Repository</i></td><td><i>Tools → Version Control → Project Setup</i> → Git</td></tr>
+<tr><td>Then publish</td><td><i>Publish Branch</i></td><td><code>usethis::use_github()</code></td></tr>
+<tr><td>Clone from GitHub</td><td>Source Control → <i>Clone Repository</i></td><td><i>New Project → Version Control → Git</i></td></tr>
+</tbody>
+</table>
+To create a repo on GitHub: <b>+</b> → <i>New repository</i>, tick <i>Add a README</i>.
+</details>
+```
+
+::: {.notes}
+There are two ways to get a repository. If you already have a project folder, turn it into a repo where it is: that's "initialize". Git starts watching the folder, nothing is moved or uploaded. Make a first commit, then publish it to GitHub when you want a backup. I'll do this in the demo with the toy project. If you're starting something new, it's often easier the other way round: create an empty repo on GitHub first, then clone it to your laptop. Then it's already connected, and push and pull just work. That's what you'll do in the exercise. Before initializing an existing folder, add a .gitignore so the data never gets committed.
+:::
+
 ## Words you need
 
 | Word | Means |
@@ -236,6 +265,7 @@ This is the full vocabulary for today. You'll come across "branch" online: a sid
 
 :::: {.columns}
 ::: {.column width="45%"}
+- Turn a project folder into a repo
 - Edit a script, see the diff, commit
 - Let an AI edit, review it
 - Look back in history
@@ -383,7 +413,8 @@ Pairs are fine. People without a working setup can do steps 3 to 5 in the browse
 ::: {.callout-tip appearance="simple" icon="false"}
 ## Then
 - You never lose work
-- You can review every change, also AI's
+- You can review changes
+- Much better integration with AI
 - Your code is ready to share
 :::
 :::
@@ -424,7 +455,6 @@ Word, Excel and .dta files can be committed but git can't show what changed insi
 ```{=html}
 <details><summary>Bonus: test locally with fake data</summary>
 A small script makes fake data with the same columns, so the server scripts run on your laptop.
-See <code>example-project/</code> in the workshop repo.
 </details>
 ```
 

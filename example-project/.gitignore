@@ -1,14 +1,7 @@
-# Never commit data. These patterns are a safety net, not a substitute for care.
+# Never commit data
 *.rds
-*.RData
 *.dta
-*.sav
-*.sas7bdat
-*.parquet
 data/
-
-# Raw server output: only reviewed aggregates are copied to exports/
-TSD/output/
 
 # R / RStudio / OS clutter
 .Rhistory

@@ -63,37 +63,36 @@ DECISION: Show a merge conflict (30 s, to defuse fear)? yes / no (currently only
 
 ### Prepare the demo repo (day before)
 
-- [ ] Copy `example-project/` to its own folder outside this repo, e.g. `Documents/GitHub/toy-project`.
-- [ ] Open it in VS Code, *Initialize repository*, and build up a short history (one commit each):
-  1. "Add project skeleton and README"
-  2. "Add simulation and model scripts"
-  3. "Add first results from the server"
-  4. "Add figure script and manuscript draft"
-- [ ] Publish to GitHub (VS Code: *Publish Branch*). Choose public/private per §1.
+- [ ] Copy `example-project/` twice to folders outside this repo: `Documents/GitHub/toy-project` (main demo, VS Code) and `Documents/GitHub/toy-project-rstudio` (only for showing initialize in RStudio). Don't initialize either: that happens live.
+- [ ] Do a full dry run, then delete both copies' `.git` folders (hidden) and any `toy-project` repo on GitHub, so you start clean.
 - [ ] Prepare the "AI edit" for demo 1. Either do it live with Copilot/Claude, or have the change ready in a text file to paste. DECISION: live AI / pasted
-- [ ] Prepare a "collaborator" change for demo 2: edit `README.md` directly on github.com, so there is something to pull.
+- [ ] Be logged in to github.com in the browser, and to GitHub in VS Code (*Accounts* icon, bottom left), so publishing doesn't stall on a login.
 - [ ] Take fallback screenshots of each step into `slides/img/`.
 - [ ] Close other windows, large font in VS Code and RStudio (Ctrl + `+`), turn off notifications.
 
 ### Demo 1: VS Code (10 min)
 
-1. Open the toy project. Point at the Source Control icon (left bar).
-2. Change one line in `TSD/R/fit_model.R`: add `+ birth_year` to the model. Save.
-3. Show: the file gets an `M`, click it, side-by-side diff. *"This is track changes for code."*
-4. Write message "Adjust for birth year", click *Commit*. The file is clean again.
-5. **AI edit.** Ask the AI assistant to "add input checks and tidy the script". It changes many lines.
-6. Open the diff. Walk through it. Undo one change you didn't ask for: in the editor, click the coloured bar in the left margin → *Revert* (or use the AI tool's own keep/undo buttons). Commit the rest.
+1. Open the toy project folder (*File → Open Folder*). Point at the Source Control icon (left bar): it says the folder is not a repository yet.
+2. **Initialize.** Click *Initialize Repository*. All files appear as new (`U`). *"Git is now watching this folder. Nothing is uploaded."* Point at `.gitignore`: data files will never show up here.
+   Commit everything with message "First version" (click *Yes* when asked about staging).
+3. Change one line in `analysis.R`: add `+ education` to the model. Save. Run it: the estimate for age at first birth drops from 0.90 to 0.09. *"Most of the association was education."*
+4. Show: the file gets an `M`, click it, side-by-side diff. *"This is track changes for code."*
+5. Write message "Adjust for education", click *Commit*. The file is clean again.
+6. **AI edit.** Ask the AI assistant to "add input checks and tidy the script". It changes many lines.
+7. Open the diff. Walk through it. Undo one change you didn't ask for: in the editor, click the coloured bar in the left margin → *Revert* (or use the AI tool's own keep/undo buttons). Commit the rest.
    *Point: commit before you let AI touch your code, then review the diff like a referee.*
-7. Show history: *Graph* in Source Control, or *Timeline* at the bottom of the Explorer. Click an old commit, see what it changed.
+8. Show history: *Graph* in Source Control, or *Timeline* at the bottom of the Explorer. Click an old commit, see what it changed.
 
-### Demo 2: GitHub and RStudio (5 min)
+### Demo 2: GitHub and RStudio (7 min)
 
-1. In VS Code: *Sync Changes*. Switch to github.com, refresh, show the commit appears.
-2. On github.com: show the list of commits, click one, same diff in the browser.
+1. In VS Code: *Publish Branch*, choose private/public per §1. *"The folder existed first; now it gets a copy on GitHub. In the exercise you'll start the other way round: on GitHub first."*
+2. On github.com: open the new repo, show the list of commits, click one, same diff in the browser.
 3. Show *Settings → Collaborators* (just point, don't add).
-4. Open the same project in RStudio (`.Rproj`). Git pane, top right.
-5. *Pull* (blue arrow) to get the change made on the web.
-6. Tick a file, *Commit*, write message, *Push* (green arrow). Same ideas, different buttons.
+4. Play the collaborator: open `README.md` on github.com, pencil icon, change a line, *Commit changes*.
+5. **Initialize in RStudio.** Open `toy-project-rstudio/toy-project.Rproj`. No Git tab yet. *Tools → Version Control → Project Setup*, set *Version control system* to *Git*, confirm twice. RStudio restarts and a **Git** tab appears, files marked `?`. *"Same thing as Initialize in VS Code, different buttons."* Leave this copy here.
+6. *File → Open Project* → `toy-project/toy-project.Rproj` (the published one). Git tab, top right.
+7. *Pull* (blue arrow) to get the change made on the web.
+8. Tick a file, *Commit*, write message, *Push* (green arrow). Same ideas, different buttons.
 
 ### If something fails
 
@@ -107,7 +106,7 @@ DECISION: Show a merge conflict (30 s, to defuse fear)? yes / no (currently only
 Full steps in [participants/exercise.md](participants/exercise.md).
 
 - **Variant A**: create a new repo on github.com (with README), clone it, edit README, commit, push, see it online.
-- **Variant B**: "Use this template" on the demo repo, clone, make a change in `analysis/`, commit, push.
+- **Variant B**: "Use this template" on the demo repo, clone, make a change in `analysis.R`, commit, push.
 
 DECISION: A / B. A is safer (fewer moving parts).
 
@@ -145,7 +144,7 @@ Short, near the end. One way to do it, not a recommendation everyone must follow
 - Git can be installed on TSD, but I don't use it there.
 - Instead: the server scripts live in a folder in the local repo (`TSD/` or `on_server/`). Edit there, copy to TSD, run, export aggregate results back.
 - Fake data with the same columns lets me run the server scripts locally and build figures before real results exist.
-- `example-project/` shows the layout (based on `hPGS-sem` and `hs_phewas`).
+- (`example-project/` is now just a single regression script, not a TSD layout example.)
 
 DECISION: Why I don't use git on TSD (one line for the slide notes): ___
 
