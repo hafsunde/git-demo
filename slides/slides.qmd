@@ -280,7 +280,7 @@ create it on GitHub, then clone it
 ```
 
 ::: {.notes}
-There are two ways to get a repository. If you already have a project folder, turn it into a repo where it is: that's "initialize". Git starts watching the folder, nothing is moved or uploaded. But initializing doesn't save anything yet: until the first commit, there is no history and nothing to publish. So make a first commit of everything, then publish it to GitHub when you want a backup. I'll do this in the demo with the toy project. If you're starting something new, it's often easier the other way round: create an empty repo on GitHub first, then clone it to your laptop. Then it's already connected, and push and pull just work. That's what you'll do in the exercise. Before initializing an existing folder, add a .gitignore so the data never gets committed.
+There are two ways to get a repository. If you already have a project folder, turn it into a repo where it is: that's "initialize". Git starts watching the folder, nothing is moved or uploaded. But initializing doesn't save anything yet: until the first commit, there is no history and nothing to publish. So make a first commit of everything, then publish it to GitHub when you want a backup. I'll initialize the toy project in demo 1, and publish this workshop's folder in demo 2. If you're starting something new, it's often easier the other way round: create an empty repo on GitHub first, then clone it to your laptop. Then it's already connected, and push and pull just work. That's what you'll do in the exercise. Before initializing an existing folder, add a .gitignore so the data never gets committed.
 :::
 
 ## Words you need
@@ -299,7 +299,7 @@ There are two ways to get a repository. If you already have a project folder, tu
 This is the full vocabulary for today. You'll come across "branch" online: a side version of the project. Useful later, not needed to start. Point to the cheat sheet in the repo.
 :::
 
-# Demo: VS Code {background-color="#0969da"}
+# Demo 1: VS Code and RStudio {background-color="#0969da"}
 
 ## What I'll show
 
@@ -309,6 +309,7 @@ This is the full vocabulary for today. You'll come across "branch" online: a sid
 - Edit a script, see the diff, commit
 - Let an AI edit, review it
 - Look back in history
+- Then the same in RStudio
 :::
 ::: {.column width="55%"}
 ![](img/vscode-diff.png){fig-alt="VS Code Source Control panel with analysis.R open in diff view: the lm() line gains + education"}
@@ -316,7 +317,7 @@ This is the full vocabulary for today. You'll come across "branch" online: a sid
 ::::
 
 ::: {.notes}
-Live demo. Follow the demo script in workshop-plan.md section 4. If the demo fails, use the screenshots. Keep the font large.
+Live demo. Follow Demo 1 in workshop-plan.md (run sheet). If the demo fails, use the screenshots. Keep the font large.
 :::
 
 ## Reviewing AI edits
@@ -359,6 +360,32 @@ This is maybe the strongest reason to start using git now. AI assistants in VS C
 Show the timeline or graph view. Click an old commit and show its diff. Mention that reviewers asking "what did you change?" can now be answered precisely. The tabs on the slide show where the same view is in RStudio.
 :::
 
+## Same buttons, different places
+
+::: {.panel-tabset}
+### Buttons
+
+| | VS Code | RStudio |
+|---|---|---|
+| See changes | Source Control (left bar) | Git pane (top right) |
+| Diff | click the file | *Diff* |
+| Commit | type message, *Commit* | tick, *Commit* |
+| Push and pull | *Sync Changes* | green / blue arrow |
+| History | *Graph* / Timeline | clock icon |
+
+### VS Code diff
+
+![](img/vscode-diff.png){fig-alt="VS Code Source Control panel with analysis.R open in diff view: the lm() line gains + education" style="max-height: 580px; width: auto;"}
+
+### RStudio diff
+
+![](img/rstudio-diff.png){fig-alt="RStudio Review Changes window: analysis.R selected, diff shows the lm() line gaining + education, with Stage chunk and Discard chunk buttons" style="max-height: 580px; width: auto;"}
+:::
+
+::: {.notes}
+Demo 1, RStudio part: open the same toy-project in RStudio. The Git tab is there because git lives in the folder (.git), not in the editor. Show the same history (clock icon), make a small edit and show the diff. If time: show initialize in RStudio on toy-project-rstudio. RStudio only shows the Git pane when the folder is an RStudio project and git was installed before RStudio started. VS Code's Sync Changes does pull and push in one click; RStudio has separate buttons. The second tab is a fallback screenshot of RStudio's diff window: same diff as in VS Code, with Stage chunk and Discard chunk on the right. Stata users: Stata has no git button; open the folder in VS Code.
+:::
+
 # GitHub {background-color="#24292f"}
 
 ## Why GitHub
@@ -369,7 +396,7 @@ Show the timeline or graph view. Click an old commit and show its diff. Mention 
 - Backup off your laptop
 
 ::: {.notes}
-Sharing is the main reason. Journals increasingly ask for code, and a link to a GitHub repo is the standard way to give it. Linking the repo to Zenodo gives a citable DOI for the exact version used in the paper. Private repos are free, so you can keep a project private until you're ready. Demo: push, refresh github.com, show the commits and a diff in the browser.
+Sharing is the main reason. Journals increasingly ask for code, and a link to a GitHub repo is the standard way to give it. Linking the repo to Zenodo gives a citable DOI for the exact version used in the paper. Private repos are free, so you can keep a project private until you're ready.
 :::
 
 ## Working with others
@@ -403,30 +430,19 @@ Copy the final code into a **new repo**, and make that public
 When you make a repo public, everyone can see every commit ever made, not only the current files. That includes half-finished code, comments to coauthors, and files you deleted long ago: deleting a file only removes it from new versions, not from the history. Often that's fine. If not, the simple fix is to create a fresh repository, copy in the final version of the code, and publish that one. Keep the original private for your own history.
 :::
 
-## Same buttons, different places
+# Demo 2: GitHub {background-color="#0969da"}
 
-::: {.panel-tabset}
-### Buttons
+## What I'll show
 
-| | VS Code | RStudio |
-|---|---|---|
-| See changes | Source Control (left bar) | Git pane (top right) |
-| Diff | click the file | *Diff* |
-| Commit | type message, *Commit* | tick, *Commit* |
-| Push and pull | *Sync Changes* | green / blue arrow |
-| History | *Graph* / Timeline | clock icon |
-
-### VS Code diff
-
-![](img/vscode-diff.png){fig-alt="VS Code Source Control panel with analysis.R open in diff view: the lm() line gains + education" style="max-height: 580px; width: auto;"}
-
-### RStudio diff
-
-![](img/rstudio-diff.png){fig-alt="RStudio Review Changes window: analysis.R selected, diff shows the lm() line gaining + education, with Stage chunk and Discard chunk buttons" style="max-height: 580px; width: auto;"}
+::: {.steps}
+1. Publish this workshop's folder to GitHub, as a public repo
+2. Look at it on github.com: files, commits, a diff
+3. Edit on github.com, as a coauthor would
+4. Pull the change back to my laptop
 :::
 
 ::: {.notes}
-Demo 2: open the same project in RStudio. VS Code's Sync Changes does pull and push in one click; RStudio has separate buttons. RStudio only shows the Git pane when the folder is an RStudio project and git was installed before RStudio started. Pull the change made on the web, then commit and push something. The second tab is a fallback screenshot of RStudio's diff window: same diff as in VS Code, with Stage chunk and Discard chunk on the right. Stata users: Stata has no git button; open the folder in VS Code.
+DEMO 2 NOW. Follow Demo 2 in workshop-plan.md (run sheet). Publish git-demo as public and keep the name, so https://github.com/hafsunde/git-demo works for Exercise 1.
 :::
 
 # Your turn {background-color="#0969da"}
