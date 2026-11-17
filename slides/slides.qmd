@@ -22,7 +22,7 @@ format:
 #   .flow / .box / .arrow   box-and-arrow diagrams (raw HTML)
 #   <details>      expandable box, for people reading the slides later
 #   {.top}         on a slide title: don't centre the content vertically
-# Divider colours: #24292f ($primary) = new topic, #0969da ($accent) = switch to the app.
+# Divider colours: #24292f ($primary) = new topic, #c2410c ($app) = switch to the app.
 # These hex codes must match the palette block in custom.scss.
 ---
 
@@ -106,9 +106,8 @@ Word users know track changes. Git is the same idea, but for every file in a pro
 A project folder that git keeps an eye on.
 :::
 
-- Your R scripts, `.do` files, `.tex`, `.md`
-- Git notices every change
-- Nothing goes into the history until you say so
+- **Analysis**: scripts and small files (`.R`, `.do`, `.csv`)
+- **Writing**: papers and slides (`.tex`, `.md`, `.qmd`)
 
 ```{=html}
 <details class="tip"><summary>Tip: tell git what to ignore with <code>.gitignore</code></summary>
@@ -119,7 +118,7 @@ for example data, large output and temporary files. One pattern per line:
 ```
 
 ::: {.notes}
-A repository, or repo, is just a normal folder. You keep working in it exactly as before. Git sees changes as soon as you save a file, but it doesn't record them until you make a commit.
+A repository, or repo, is just a normal folder. You keep working in it exactly as before. It's not only for analysis code: papers in LaTeX or Markdown and slides in Quarto or Beamer work just as well, because they're plain text too. These slides are in git. Small, non-sensitive files like a codebook .csv are fine; real data stays out (see the tip).
 
 The tip box (click to open): a .gitignore file tells git which files to leave alone. Useful for data files, big outputs, and clutter like .Rhistory. Ignored files never show up as changes, so you can't commit them by accident. RStudio creates a basic one when you make a project with git.
 :::
@@ -299,7 +298,7 @@ There are two ways to get a repository. If you already have a project folder, tu
 This is the full vocabulary for today. You'll come across "branch" online: a side version of the project. Useful later, not needed to start. Point to the cheat sheet in the repo.
 :::
 
-# Demo 1: VS Code and RStudio {background-color="#0969da"}
+# Demo 1: VS Code and RStudio {background-color="#c2410c"}
 
 ## What I'll show
 
@@ -430,7 +429,7 @@ Copy the final code into a **new repo**, and make that public
 When you make a repo public, everyone can see every commit ever made, not only the current files. That includes half-finished code, comments to coauthors, and files you deleted long ago: deleting a file only removes it from new versions, not from the history. Often that's fine. If not, the simple fix is to create a fresh repository, copy in the final version of the code, and publish that one. Keep the original private for your own history.
 :::
 
-# Demo 2: GitHub {background-color="#0969da"}
+# Demo 2: GitHub {background-color="#c2410c"}
 
 ## What I'll show
 
@@ -445,7 +444,7 @@ When you make a repo public, everyone can see every commit ever made, not only t
 DEMO 2 NOW. Follow Demo 2 in workshop-plan.md (run sheet). Publish git-demo as public and keep the name, so https://github.com/hafsunde/git-demo works for Exercise 1.
 :::
 
-# Your turn {background-color="#0969da"}
+# Your turn {background-color="#c2410c"}
 
 ## Exercise 1: set up git and clone this workshop
 
