@@ -46,6 +46,8 @@ $code-block-font-size: 0.95em;
   height: 100%;
 }
 .reveal .slides section.slide.level2:not(.scrollable):not(.top) > h2 { margin-bottom: auto; }
+/* Minimum gap under the title, so tall content never slides under the header band */
+.reveal .slides section.slide.level2 > h2 + * { margin-top: 0.6em !important; }
 .reveal .slides section.slide.level2:not(.scrollable):not(.top)::after {
   content: ""; margin-top: auto; min-height: 10%;
 }
@@ -125,6 +127,8 @@ $code-block-font-size: 0.95em;
 
 /* Cards: ::: {.cards} with one ::: {} per card, first line **bold** */
 .reveal .cards { display: flex; gap: 0.6em; align-items: stretch; margin-bottom: 0.8em; }
+/* Even out line lengths so no single word is left alone on the last line */
+.reveal .cards > div, .reveal table td, .reveal details summary { text-wrap: balance; }
 .reveal .cards > div {
   flex: 1; border-top: 9px solid $accent; background: rgba($accent, 0.08);
   border-radius: 12px; padding: 0.7em 0.8em; font-size: 0.95em; text-align: center;

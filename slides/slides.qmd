@@ -208,7 +208,7 @@ Staging is optional, and I seldom use it. It's not quite "Accept change": everyt
 |-------|-----------------|-----------------|
 | File | ↶ or **+** next to the file | *More → Revert*, or tick *Staged* |
 | Block | buttons next to the block in the diff | *Discard chunk* / *Stage chunk* |
-| Lines | select, right-click → *Revert / Stage Selected Ranges* | select → *Discard / Stage selection* |
+| Lines | select, right-click → [*Revert / Stage Selected&nbsp;Ranges*]{style="white-space: nowrap"} | select → *Discard / Stage selection* |
 | Commit | nothing staged = commit all | tick *Staged* (usually all) |
 
 ::: {.notes}
@@ -272,10 +272,10 @@ create it on GitHub, then clone it
 <tr><td>Initialize a folder</td><td>Source Control → <i>Initialize Repository</i></td><td><i>Tools → Version Control → Project Setup</i> → Git</td></tr>
 <tr><td>First commit</td><td>Message "First version" → <i>Commit</i></td><td>Tick all files under <i>Staged</i> → <i>Commit</i></td></tr>
 <tr><td>Then publish</td><td><i>Publish Branch</i></td><td><code>usethis::use_github()</code></td></tr>
-<tr><td>Clone from GitHub</td><td>Source Control → <i>Clone Repository</i></td><td><i>New Project → Version Control → Git</i></td></tr>
+<tr><td>New repo on GitHub</td><td colspan="2">github.com: <b>+</b> → <i>New repository</i>, tick <i>Add a README</i></td></tr>
+<tr><td>Then clone</td><td>Source Control → <i>Clone Repository</i></td><td><i>New Project → Version Control → Git</i></td></tr>
 </tbody>
 </table>
-To create a repo on GitHub: <b>+</b> → <i>New repository</i>, tick <i>Add a README</i>.
 </details>
 ```
 
