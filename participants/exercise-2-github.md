@@ -1,10 +1,27 @@
-# Exercise: your first commit and push (15 min)
+# Exercise 2: your first commit and push (15 min)
 
 Goal: make a repository on GitHub, get it onto your laptop, change something, and send the change back.
+
+You need git working and the workshop repo cloned from Exercise 1 (`participants/exercise-1-setup.md`). Not finished? Pair with someone whose setup works, or use the browser-only route at the bottom.
 
 Working in pairs is fine.
 
 ---
+
+## Before you start: a GitHub account
+
+No account yet? Go to <https://github.com> and sign up.
+Pick a username you are happy to put on a CV or in a paper (e.g. `karinordmann`, not `catlover92`).
+
+Logging in from your computer:
+
+- **VS Code** (Windows and Mac) and **RStudio on Windows**: nothing to do now. The first time you push (step 5), a browser window opens to sign in to GitHub. Click *Allow*.
+- **RStudio on Mac**: you need a *token* (a password for programs). In R:
+
+  ```r
+  usethis::create_github_token()   # opens GitHub; click "Generate token" and copy it
+  gitcreds::gitcreds_set()         # paste the token when asked
+  ```
 
 ## 1. Make a repository on GitHub (2 min)
 
@@ -17,19 +34,10 @@ Working in pairs is fine.
 
 ## 2. Get it onto your laptop ("clone") (3 min)
 
-**VS Code**
+Same as cloning the workshop repo in Exercise 1, but with your own link:
 
-1. Close any open folder (*File → Close Folder*).
-2. Click the **Source Control** icon in the left bar → **Clone Repository**.
-3. Paste the link, press Enter.
-4. Choose where to put it, e.g. `Documents/GitHub`. Click **Open** when asked.
-
-**RStudio**
-
-1. *File → New Project → Version Control → Git*.
-2. Paste the link in *Repository URL*.
-3. Choose where to put it (*Create project as subdirectory of*), e.g. `Documents/GitHub`.
-4. Click **Create Project**. A **Git** tab appears top right.
+- **VS Code**: *File → Close Folder*, then **Source Control** → **Clone Repository**, paste the link, choose a folder (e.g. `Documents/GitHub`), click **Open**.
+- **RStudio**: *File → New Project → Version Control → Git*, paste the link, choose a folder, **Create Project**.
 
 > Don't put it in OneDrive or Dropbox.
 
@@ -57,7 +65,7 @@ Open `README.md`. Add a line, for example what you work on. Save.
 **VS Code**: click **Sync Changes**.
 **RStudio**: click the green **Push** arrow.
 
-The first time, a login window appears. Follow it.
+The first time, a login window appears. Follow it. On a Mac with RStudio you need the token from *Before you start*.
 
 Now refresh your repo on github.com. Your change and your message are there.
 Click the commit message to see the diff in the browser.
@@ -98,7 +106,7 @@ Do steps 1, 3 and 4 directly on github.com: open `README.md`, click the pencil i
 | Problem | Try |
 |---|---|
 | RStudio has no Git tab | Restart RStudio. Check *Tools → Global Options → Git/SVN*. Make sure you opened a *project*. |
-| VS Code says git is not found | Install git (see `setup.md`), then restart VS Code. |
-| "Please tell me who you are" | Run the `usethis::use_git_config()` step in `setup.md`. |
-| Push asks for a password | GitHub doesn't accept your password here. Use the browser login, or a token (`setup.md`, step 6). |
+| VS Code says git is not found | Install git (Exercise 1, step 1), then restart VS Code. |
+| "Please tell me who you are" | Do Exercise 1, step 3. |
+| Push asks for a password | GitHub doesn't accept your password here. Use the browser login, or a token (see *Before you start*). |
 | "Updates were rejected" | Someone (maybe you, on the web) changed GitHub first. Pull, then push. |

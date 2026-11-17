@@ -20,8 +20,7 @@ Working document. Edit freely. Fields marked `DECISION:` are open; tick `[ ]` bo
 | Make demo repo a template for participants? | DECISION: yes / no |
 | Exercise variant (see §5) | DECISION: A (own new repo) / B (from template) |
 | Publish slides on GitHub Pages? | DECISION: yes / no |
-| Send setup email when | DECISION: ___ (at least 1 day before) |
-| Pre-workshop poll (OS, editor, GitHub account) | DECISION: yes / no |
+| Setup | Done in the session as Exercise 1, on the slides (no email beforehand). Participants clone this workshop repo, published publicly in Demo 2 |
 | Follow-up channel after workshop | DECISION: Teams/Slack channel / office hour / none |
 
 ---
@@ -49,11 +48,11 @@ Scope: no command line (a choice to keep it simple; mention once that it exists)
 | 5–15 | Core ideas: repo, `.git` folder, commit, diff, the cycle, laptop vs GitHub | Talk + diagram | 7–14 |
 | 15–25 | Demo 1, VS Code: edit, diff, commit, AI edit review, history | Live demo | 15–18 |
 | 25–32 | GitHub: sharing, coauthors, making code public. Demo 2: same in RStudio | Talk + live demo | 19–23 |
-| 32–47 | Hands-on | Exercise | 24–25 |
+| 32–47 | Hands-on: Exercise 1 (setup), then Exercise 2 (GitHub) | Exercise | 24–25 |
 | 47–56 | It's a hurdle, it's worth it. Tips. Idea for secure servers. Learn more | Talk | 26–30 |
 | 56–60 | Questions | | 31 |
 
-DECISION: If setup turns out patchy (from the poll), cut hands-on to 10 min and give the time to demo 1.
+Adapt on the day: if setup is slow, let people pair up and do Exercise 2 on one working laptop, or in the browser.
 
 DECISION: Show a merge conflict (30 s, to defuse fear)? yes / no (currently only mentioned in words)
 
@@ -86,6 +85,7 @@ DECISION: Show a merge conflict (30 s, to defuse fear)? yes / no (currently only
 ### Demo 2: GitHub and RStudio (7 min)
 
 1. In VS Code: *Publish Branch*, choose private/public per §1. *"The folder existed first; now it gets a copy on GitHub. In the exercise you'll start the other way round: on GitHub first."*
+   Then open this workshop repo (`git-demo`) in VS Code and *Publish Branch* → **public**. Show it on github.com: *"This is the link you'll clone in Exercise 1."*
 2. On github.com: open the new repo, show the list of commits, click one, same diff in the browser.
 3. Show *Settings → Collaborators* (just point, don't add).
 4. Play the collaborator: open `README.md` on github.com, pencil icon, change a line, *Commit changes*.
@@ -103,7 +103,7 @@ DECISION: Show a merge conflict (30 s, to defuse fear)? yes / no (currently only
 
 ## 5. Hands-on (15 min)
 
-Full steps in [participants/exercise.md](participants/exercise.md).
+Full steps in [participants/exercise-1-setup.md](participants/exercise-1-setup.md) (Exercise 1, also on the slides: install git, `use_git_config`, clone this workshop repo) and [participants/exercise-2-github.md](participants/exercise-2-github.md) (Exercise 2: the variant below).
 
 - **Variant A**: create a new repo on github.com (with README), clone it, edit README, commit, push, see it online.
 - **Variant B**: "Use this template" on the demo repo, clone, make a change in `analysis.R`, commit, push.
@@ -164,8 +164,7 @@ DECISION: Why I don't use git on TSD (one line for the slide notes): ___
 
 ## 10. Pre-workshop checklist
 
-- [ ] Send setup email with [participants/setup.md](participants/setup.md). Date: ___
-- [ ] (Optional) Poll: Windows/Mac? RStudio/VS Code/Stata? GitHub account?
+- [ ] Before publishing the workshop repo: decide whether this file (`workshop-plan.md`) should be public.
 - [ ] Test the setup instructions on a Mac if any participants use one. Who can test: ___
 - [ ] Prepare demo repo (§4).
 - [ ] Render slides, check speaker notes (press `S`).

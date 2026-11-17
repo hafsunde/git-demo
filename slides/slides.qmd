@@ -431,20 +431,127 @@ Demo 2: open the same project in RStudio. VS Code's Sync Changes does pull and p
 
 # Your turn {background-color="#0969da"}
 
-## Exercise (15 min)
+## Exercise 1: set up git and clone this workshop
 
 ::: {.steps}
-1. New repo on github.com, with a README
+1. Install git
+2. Restart RStudio / VS Code
+3. Tell git who you are
+4. Clone the workshop repo
+:::
+
+No GitHub account needed yet. Pairs are fine.
+
+::: {.notes}
+Four short steps, one slide each. When the clone works, people have the exercises, cheatsheet and slides on their laptop. Then they go on to Exercise 2.
+:::
+
+## 1. Install git
+
+| | |
+|---|---|
+| Work laptop (Windows) | *Company Portal* (*Firmaportal*) → search **Git** → *Install* |
+| Private laptop (Windows) | <https://git-scm.com/downloads/win>, click *Next* through everything |
+| Mac | *Terminal* app → type `git --version` → *Install* if asked |
+
+::: {.notes}
+On a Mac, if git --version prints a version number, git is already there. VS Code users will also use the built-in terminal once, in step 3.
+:::
+
+## 2. Restart your editor
+
+| | |
+|---|---|
+| RStudio | Restart. Check *Tools → Global Options → Git/SVN*: "Git executable" shows a path |
+| VS Code | Restart. Git support is built in |
+
+Stata: use VS Code for git.
+
+::: {.notes}
+The editor only looks for git when it starts. "Git not found" or no Git tab almost always means the editor was open while git was installed.
+:::
+
+## 3. Tell git who you are {.top}
+
+Every commit records **who** made it: a name and an email.
+Git won't commit until it knows. GitHub uses the email to link commits to your account.
+
+::: {.panel-tabset}
+### RStudio (R console)
+
+```r
+install.packages("usethis")
+usethis::use_git_config(
+  user.name  = "Your Name",
+  user.email = "you@example.com"
+)
+usethis::git_sitrep()   # check
+```
+
+### VS Code (terminal)
+
+*Terminal → New Terminal*, then one line at a time:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+git config --global --list   # check
+```
+:::
+
+Use the email you use (or will use) for GitHub. You only do this once per computer.
+
+::: {.notes}
+VS Code has no button for this, so it's two lines in its built-in terminal. If someone has R, the usethis route works for VS Code users too. Warnings in git_sitrep about tokens are fine for now.
+:::
+
+## 4. Clone the workshop repo {.top}
+
+**<https://github.com/hafsunde/git-demo>**
+
+:::: {.columns}
+::: {.column width="50%"}
+**VS Code**
+
+::: {.steps}
+1. *File → Close Folder*
+2. Source Control → *Clone Repository*
+3. Paste the link, Enter
+4. Choose a folder → *Open*
+:::
+:::
+::: {.column width="50%"}
+**RStudio**
+
+::: {.steps}
+1. *File → New Project*
+2. *Version Control → Git*
+3. Paste the link
+4. Choose a folder → *Create Project*
+:::
+:::
+::::
+
+Not in OneDrive or Dropbox. Then open `participants/exercise-2-github.md`.
+
+::: {.notes}
+"Clone" means download the repo with its whole history. Anyone can clone a public repo, no login needed. Suggest Documents/GitHub as the folder. Done early: look at the history (Graph in VS Code, clock icon in RStudio) and click a commit.
+:::
+
+## Exercise 2: your own repo on GitHub
+
+::: {.steps}
+1. GitHub account (if needed), then new repo on github.com, with a README
 2. Clone it to your laptop
 3. Edit the README, save
 4. Look at the diff, commit
 5. Push, refresh github.com
 :::
 
-Steps: `participants/exercise.md`
+Steps: `participants/exercise-2-github.md`
 
 ::: {.notes}
-Pairs are fine. People without a working setup can do steps 3 to 5 in the browser on github.com (pencil icon). Walk around. The most common problem will be the login at the first push.
+Go on to this when Exercise 1 works; adapt to where people are. One working laptop per pair is enough. People without a working setup can do steps 3 to 5 in the browser on github.com (pencil icon). The most common problem will be the login at the first push.
 :::
 
 # Is it worth it? {background-color="#24292f"}

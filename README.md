@@ -7,8 +7,8 @@ Everything is done with the buttons in VS Code and RStudio.
 
 | File | What it is |
 |---|---|
-| [participants/setup.md](participants/setup.md) | **Do this before the workshop.** Install git, make a GitHub account, check that login works. |
-| [participants/exercise.md](participants/exercise.md) | The hands-on exercise (VS Code or RStudio). |
+| [participants/exercise-1-setup.md](participants/exercise-1-setup.md) | Exercise 1: install git, tell git who you are, clone this repo. (Also on the slides.) |
+| [participants/exercise-2-github.md](participants/exercise-2-github.md) | Exercise 2: GitHub account, new repo, clone, commit, push (VS Code or RStudio). |
 | [participants/cheatsheet.md](participants/cheatsheet.md) | One page: the words, and which button does what. |
 | [slides/](slides/) | The slides (Quarto). |
 | [example-project/](example-project/) | A toy project for the demo: one simple regression script. |
