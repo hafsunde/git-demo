@@ -91,7 +91,7 @@ data/
 - Messages that say why (`Adjust for education`, not `changes`)
 - Plain text files work best: `.R`, `.do`, `.tex`, `.md`, `.qmd`
 - LaTeX and Markdown: one sentence per line
-- Keep repos in a normal folder, not OneDrive/Dropbox
+- Prefer a normal folder (e.g. `Documents/GitHub`) over OneDrive/Dropbox; syncing can clash with git
 
 ## Learn more
 

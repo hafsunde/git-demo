@@ -39,7 +39,7 @@ Same as cloning the workshop repo in Exercise 1, but with your own link:
 - **VS Code**: *File → Close Folder*, then **Source Control** → **Clone Repository**, paste the link, choose a folder (e.g. `Documents/GitHub`), click **Open**.
 - **RStudio**: *File → New Project → Version Control → Git*, paste the link, choose a folder, **Create Project**.
 
-> Don't put it in OneDrive or Dropbox.
+> Tip: a normal folder works best. OneDrive or Dropbox is usually fine as a backup, but syncing between computers can clash with git.
 
 ## 3. Change something (1 min)
 

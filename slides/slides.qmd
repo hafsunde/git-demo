@@ -608,7 +608,7 @@ Use the email you use (or will use) for GitHub. You only do this once per comput
 :::
 ::::
 
-Not in OneDrive or Dropbox. Then open `participants/exercise-2-github.md`.
+A normal folder works best, e.g. `Documents/GitHub`. Then open `participants/exercise-2-github.md`.
 
 ::: {.notes}
 - Clone = download with the whole history
@@ -669,12 +669,12 @@ one link for coauthors, journals, or the public
 - Pull when you start, push when you're done
 - Plain text works best (`.R`, `.do`, `.tex`, `.md`)
 - LaTeX/Markdown: one sentence per line
-- No repos inside OneDrive/Dropbox
+- Prefer a normal folder over OneDrive/Dropbox
 
 ::: {.notes}
 - Word, Excel, `.dta`: tracked, but no readable diff
 - One sentence per line: git compares lines
-- OneDrive/Dropbox fight with git: use `Documents/GitHub`
+- OneDrive/Dropbox: fine as backup; syncing between computers can clash with git. Use push/pull for that
 :::
 
 ## An idea for TSD
@@ -716,7 +716,7 @@ Possible questions, short answers:
 - **Stata?** No git button; use VS Code
 - **Overleaf?** Syncs with GitHub on a paid plan; or write LaTeX locally
 - **Command line?** Not to start; same git, maybe later
-- **OneDrive/Dropbox?** Don't put repos there; they fight
+- **OneDrive/Dropbox?** OK as backup; don't use it to sync a repo between computers, use push/pull
 - **Word/Excel?** Tracked, but no readable diff; plain text works best
 - **Branches?** Side versions; useful later, not needed to start
 - **Citing code?** GitHub + Zenodo gives a DOI

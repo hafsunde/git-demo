@@ -77,7 +77,7 @@ The link: **<https://github.com/hafsunde/git-demo>**
 3. Choose where to put it (*Create project as subdirectory of*), e.g. `Documents/GitHub`.
 4. Click **Create Project**. A **Git** tab appears top right.
 
-> Don't put it in OneDrive or Dropbox.
+> Tip: a normal folder works best. OneDrive or Dropbox is usually fine as a backup, but syncing between computers can clash with git.
 
 You now have the slides, the exercises and the cheatsheet on your laptop, with their full history.
 Next: open `participants/exercise-2-github.md`.
