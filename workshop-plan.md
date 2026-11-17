@@ -89,7 +89,7 @@ DECISION: Show a merge conflict (30 s, to defuse fear)? yes / no (currently only
 2. On github.com: open the new repo, show the list of commits, click one, same diff in the browser.
 3. Show *Settings → Collaborators* (just point, don't add).
 4. Play the collaborator: open `README.md` on github.com, pencil icon, change a line, *Commit changes*.
-5. **Initialize in RStudio.** Open `toy-project-rstudio/toy-project.Rproj`. No Git tab yet. *Tools → Version Control → Project Setup*, set *Version control system* to *Git*, confirm twice. RStudio restarts and a **Git** tab appears, files marked `?`. *"Same thing as Initialize in VS Code, different buttons."* Leave this copy here.
+5. **Initialize in RStudio.** Open `toy-project-rstudio/toy-project.Rproj`. No Git tab yet. *Tools → Version Control → Project Setup*, set *Version control system* to *Git*, confirm twice. RStudio restarts and a **Git** tab appears, files marked `?`. *"Same thing as Initialize in VS Code, different buttons."* Make the first commit: tick all files under *Staged*, *Commit*, message "First version". Leave this copy here.
 6. *File → Open Project* → `toy-project/toy-project.Rproj` (the published one). Git tab, top right.
 7. *Pull* (blue arrow) to get the change made on the web.
 8. Tick a file, *Commit*, write message, *Push* (green arrow). Same ideas, different buttons.

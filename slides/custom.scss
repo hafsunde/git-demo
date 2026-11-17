@@ -25,7 +25,7 @@ $presentation-heading-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $presentation-heading-color: $primary;
 $presentation-heading-font-weight: 700;
 $presentation-heading-text-transform: none;
-$presentation-font-size-root: 56px;  // for a 1920x1080 slide
+$presentation-font-size-root: 50px;  // for a 1920x1080 slide
 $code-block-font-size: 0.95em;
 
 
@@ -124,7 +124,7 @@ $code-block-font-size: 0.95em;
 }
 
 /* Cards: ::: {.cards} with one ::: {} per card, first line **bold** */
-.reveal .cards { display: flex; gap: 0.6em; align-items: stretch; }
+.reveal .cards { display: flex; gap: 0.6em; align-items: stretch; margin-bottom: 0.8em; }
 .reveal .cards > div {
   flex: 1; border-top: 9px solid $accent; background: rgba($accent, 0.08);
   border-radius: 12px; padding: 0.7em 0.8em; font-size: 0.95em; text-align: center;
@@ -147,7 +147,6 @@ $code-block-font-size: 0.95em;
 .reveal details.tip { border-left-color: $callout-color-tip; background: rgba($callout-color-tip, 0.07); }
 .reveal details.tip summary { color: $callout-color-tip; }
 .reveal details[open] summary { margin-bottom: 0.3em; }
-
 /* Screenshot placeholders */
 .reveal .placeholder {
   border: 3px dashed $accent;

@@ -9,7 +9,7 @@
 | diff | What changed: red removed, green added |
 | hash | A commit's unique ID, e.g. `e81c5f3` |
 | `.git` | Hidden folder inside the project that holds the history |
-| stage | Optional: choose which changes go into the next commit. Skip it and the commit takes all changes |
+| stage | Choose which changes go into the next commit. Optional in VS Code (nothing staged = commit all). In RStudio you tick *Staged* for the files to commit, usually all of them |
 | push | Send your commits to GitHub |
 | pull | Get new commits from GitHub |
 | clone | Download a repo from GitHub the first time |
