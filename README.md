@@ -3,6 +3,8 @@
 Material for a 1-hour session at the CeFH Ung 2nd Annual Young Researchers Workshop (18 November 2026), for PhD candidates and postdocs who analyse data in R (or Stata) and write in Markdown/LaTeX.
 Everything is done with the buttons in VS Code and RStudio.
 
+Test
+
 ## For participants
 
 | File | What it is |
