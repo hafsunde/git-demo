@@ -1,6 +1,6 @@
 ---
 title: "Git og GitHub for forskere"
-subtitle: "Spor endringer i koden din, og et sted å dele den"
+subtitle: "Versjonskontroll og kodedeling"
 author: "Hans Fredrik Sunde"
 institute: "CeFH Ung · 2nd Annual Young Researchers Workshop"
 date: "2026-11-18"

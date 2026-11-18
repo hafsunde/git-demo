@@ -1,6 +1,6 @@
 ---
 title: "Git and GitHub for researchers"
-subtitle: "Track changes for your code, and a place to share it"
+subtitle: "Version control and code sharing"
 author: "Hans Fredrik Sunde"
 institute: "CeFH Ung · 2nd Annual Young Researchers Workshop"
 date: "2026-11-18"
